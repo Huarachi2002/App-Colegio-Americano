@@ -1,0 +1,115 @@
+{
+  "app_name": "Colegio Americano",
+
+  "menu_title_home": "Principal",
+  "menu_title_news": "Novedades",
+  "menu_title_login": "Iniciar Sesión",
+  "menu_title_new": "Novedad",
+  "menu_title_notifications": "Notificaciones",
+  "menu_title_notification": "Notificación",
+  "menu_title_logout": "Cerrar sesión",
+  "menu_title_annotations_assists": "Anotaciones y asistencias",
+  "menu_title_report_card": "Boletín de calificaciones",
+  "menu_title_buying_materials": "Compra de materiales",
+  "menu_title_enrolled_children": "Hijos inscritos",
+  "menu_title_payment": "Pagos y deudas",
+  "menu_title_request": "Solicitud de materiales",
+  "menu_title_license_requests": "Solicitud de licencias",
+  "menu_title_license_list": "Licencias solicitadas",
+
+
+  "menu_title_image_viewer": "Visor de imagen",
+
+  "menu_title_request_historical": "Pedidos realizados",
+  "menu_title_request_detail_historical": "Detalle del pedido",
+
+  "info_view_annotations": "Por favor seleccione el estudiante al cual desea ver sus anotaciones",
+  "info_view_reports": "Por favor seleccione el estudiante al cual desea ver su boletín de calificaciones.",
+  "info_view_request": "Por favor seleccione el estudiante al cual desea ver su historial de pedidos.",
+  "info_view_payment": "Por favor seleccione el estudiante al cual desea ver sus deudas pendientes.",
+  "info_view_license": "Por favor seleccione el estudiante al cual desea ver sus licencias.",
+  "code": "Código: ",
+  "grade": "Curso: ",
+  "parallel": "Paralelo: ",
+
+  "menu_title_order_list": "Pedidos",
+
+  "description_label": "Descripción",
+  "images_label": "Imágenes",
+  "images_no_data": "No hay imágenes para mostrar",
+
+  "forgot_password_label": "¿Olvidaste tu contraseña?",
+  "login_button_label": "Ingresar",
+  "username_label": "Nombre de usuario",
+  "password_label": "Contraseña",
+
+  "empty_validation": "El campo no puede estar vacío",
+
+  "exit_alert_title": "Salir",
+  "exit_alert_message": "Presione aceptar para salir de la aplicación",
+
+  "alert_accept_label": "Aceptar",
+  "alert_cancel_label": "Cancelar",
+
+  "request_show_label": "Ver",
+  "request_accept_label": "Aceptar",
+  "request_cancel_label": "Rechazar",
+
+  "order_list_empty_message": "Lista de pedidos vacía",
+  "order_list_card_label": "Pedido",
+  "order_list_total_label": "Total Pedido",
+  "order_list_payment_method_label": "Método de pago",
+  "order_list_payment_state_label": "Estado del pago",
+
+  "order_detail_total_label": "Total: ",
+  "order_detail_empty_message" : "Detalle del pedido vacío",
+
+  "money_label": "Bs. ",
+  "price_label": "Precio: Bs. ",
+  "quantity_label": "Cantidad: ",
+
+  "unhandled_exception": "Excepción no controlada, contáctese con el administrador.",
+  "unknown_exception": "Algo salió mal, estamos trabajando para solucionarlo.",
+  "connect_exception": "No se logró conectar con el servidor.",
+  "unauthenticated_exception": "Credenciales incorrectas.",
+
+  "code_label": "Código: ",
+  "grade_label": "Curso: ",
+  "parallel_label": "Paralelo: ",
+
+  "concept_label": "Concepto: ",
+  "period_label": "Periodo: ",
+  "amount_label": "Monto: ",
+
+  "no_pending_debts_message": "No tiene deudas pendientes",
+  "retry_debts_message": "No se pudo obtener las deudas, por favor inténtelo más tarde.",
+
+
+  "no_license_requests_message": "No hay solicitudes de licencias",
+  "retry_license_requests_message": "No se pudo obtener las licencias, por favor inténtelo más tarde.",
+
+
+  "payment_label": "Pagar",
+  "alert_payment_title": "Generación de QR",
+  "alert_payment_description": "¿Está seguro de que desea pagar con QR ",
+  "retry_payment_message": "No se pudo generar el código QR, por favor inténtelo más tarde. ",
+  "currency_usd": " USD",
+
+  "license_types_label": "Tipo de licencia",
+  "periodo_label": "Periodo",
+  "exam_label": "¿Tiene examen?",
+  "subject_field": "Materia",
+  "start_date_label": "Desde",
+  "end_date_label": "Hasta",
+  "day_quantity_label": "Cantidad de días",
+  "hour_quantity_label": "Cantidad de horas",
+  "reasons_label": "Motivos",
+  "contacts_label": "Nombre y teléfono del solicitante",
+  "attachment_label": "Seleccionar adjunto",
+  "empty_value_message": "Este campo no puede estar vacío",
+  "non_numeric_value_message": "Este campo debe ser un número",
+  "is_zero_value_message" : "Este campo no puede tener 0 como valor",
+  "security_code_label": "Código de seguridad",
+
+  "security_code_successfully_requested_message": "¡Código de confirmación generado correctamente! por favor, verifique su correo familiar"
+}

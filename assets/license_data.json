@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "studentCode": "1",
+    "date": "2021-09-02",
+    "startDate": "2021-09-02",
+    "endDate": "2021-09-02",
+    "status": "activo",
+    "test": false,
+    "reason": "",
+    "requesterName": "",
+    "requesterPhone": 123,
+    "requesterEmail": "some@gmail",
+    "attachment": "none",
+    "studentId": 1,
+    "gradeId": 1,
+    "parallelId": 1,
+    "academicManagementId": 1,
+    "subjectId": 1
+  }
+]
