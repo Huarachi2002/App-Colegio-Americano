@@ -81,7 +81,7 @@ class _NewsScreenState extends State<NewsScreen> with RootScreenMixin {
     try {
       final url = await _viewModel.loginPreference.newsUrl;
       if (mounted) {
-        final safeUrl = url ?? "https://www.ds-santacruz.bo/";
+        final safeUrl = "https://sccs.edu.bo/";
         setState(() {
           _webViewUrl = safeUrl;
         });
@@ -91,9 +91,9 @@ class _NewsScreenState extends State<NewsScreen> with RootScreenMixin {
       print("Error cargando URL inicial: $e");
       if (mounted) {
         setState(() {
-          _webViewUrl = "https://www.ds-santacruz.bo/";
+          _webViewUrl = "https://sccs.edu.bo/";
         });
-        controller.loadRequest(Uri.parse("https://www.ds-santacruz.bo/"));
+        controller.loadRequest(Uri.parse("https://sccs.edu.bo/"));
       }
     }
   }

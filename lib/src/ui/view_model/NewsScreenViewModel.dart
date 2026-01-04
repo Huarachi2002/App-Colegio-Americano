@@ -16,12 +16,20 @@ import 'package:open_file_plus/open_file_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
 class NewsScreenViewModel extends BaseViewModel {
+  bool _isMounted = true;
   late StreamController<RequestStatus<List<NewsResponse>>> newsStreamController;
   late StreamController<RequestStatus<List<TypesResponse>>>
       typesStreamController;
   List<NewsResponse> _newsList = [];
   String? _lastDate;
   bool isLoading = false;
+
+  @override
+  void dispose() {
+    _isMounted = false;
+    newsStreamController.close();
+    typesStreamController.close();
+  }
 
   NewsScreenViewModel() : super() {
     newsStreamController =
@@ -49,12 +57,6 @@ class NewsScreenViewModel extends BaseViewModel {
   Stream<RequestStatus<List<TypesResponse>>> get typesStream =>
       typesStreamController.stream;
 
-  @override
-  void dispose() {
-    newsStreamController.close();
-    typesStreamController.close();
-  }
-
   getTypes(BuildContext context) async {
     typesStreamSink(RequestStatus.loadingState());
     if (_lastDate == null) {
@@ -68,8 +70,10 @@ class NewsScreenViewModel extends BaseViewModel {
     }).catchError((error) {
       /*MANDAR LO QUE HAY EN LA BD*/
       print(error);
-      typesStreamSink(RequestStatus.errorState(
-          Utils.getMessageIdFromApiException(context, error)));
+      if (_isMounted) {
+        typesStreamSink(RequestStatus.errorState(
+            Utils.getMessageIdFromApiException(context, error)));
+      }
     });
   }
 
@@ -79,7 +83,7 @@ class NewsScreenViewModel extends BaseViewModel {
       await _cleanTables();
     }
     Utils.retryFuture(
-            SyncConstants.ATTEMPTS, () => apiService.getNews(_lastDate ))
+            SyncConstants.ATTEMPTS, () => apiService.getNews(_lastDate))
         .then((response) async {
       List<NewsResponse> newsResponseList = response.body!.data!.toList();
       _lastDate = newsResponseList[newsResponseList.length - 1].updatedAt;
@@ -162,7 +166,7 @@ class NewsScreenViewModel extends BaseViewModel {
     });
   }
 
-  void savePdf(String url) async{
+  void savePdf(String url) async {
     OpenResult result;
     try {
       final file = await downloadFile(url);
@@ -173,7 +177,7 @@ class NewsScreenViewModel extends BaseViewModel {
     }
   }
 
-  Future<File> downloadFile(String url) async{
+  Future<File> downloadFile(String url) async {
     var httpClient = HttpClient();
     var request = await httpClient.getUrl(Uri.parse(url));
     var response = await request.close();
@@ -183,6 +187,4 @@ class NewsScreenViewModel extends BaseViewModel {
     await file.writeAsBytes(bytes);
     return file;
   }
-
 }
-

@@ -57,25 +57,25 @@ class NavigationManager {
     router.define(RouteMap.NEW_SCREEN_ROUTE + '/:newId',
         handler: _newScreenHandler, transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.NOTIFICATION_SCREEN_ROUTE,
-        handler: _notificationScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.NOTIFICATION_SCREEN_ROUTE,
+    //     handler: _notificationScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.NOTIFICATIONS_SCREEN_ROUTE,
-        handler: _notificationsScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.NOTIFICATIONS_SCREEN_ROUTE,
+    //     handler: _notificationsScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.STUDENT_ANNOTATION_SCREEN_ROUTE,
-        handler: _studentAnnotationScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.STUDENT_ANNOTATION_SCREEN_ROUTE,
+    //     handler: _studentAnnotationScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.STUDENT_REPORT_SCREEN_ROUTE,
-        handler: _studentReportScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.STUDENT_REPORT_SCREEN_ROUTE,
+    //     handler: _studentReportScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.STUDENT_REQUEST_SCREEN_ROUTE,
-        handler: _studentRequestScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.STUDENT_REQUEST_SCREEN_ROUTE,
+    //     handler: _studentRequestScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
     router.define(
         RouteMap.ANNOTATION_SCREEN_ROUTE +
@@ -87,11 +87,11 @@ class NavigationManager {
         handler: _browserScreenHandler,
         transitionType: TransitionType.inFromRight);
 
-    router.define(
-        RouteMap.HISTORICAL_EQUIPMENT_REQUEST +
-            '/:studentId/:erpCode/:name/:grade/:parallel',
-        handler: _historicalScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(
+    //     RouteMap.HISTORICAL_EQUIPMENT_REQUEST +
+    //         '/:studentId/:erpCode/:name/:grade/:parallel',
+    //     handler: _historicalScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
     router.define(RouteMap.STUDENT_PAYMENT_SCREEN_ROUTE,
         handler: _studentPaymentScreenHandler,
@@ -109,43 +109,43 @@ class NavigationManager {
         handler: _qrPaymentScreenHandler,
         transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.NOTIFICATION_SCREEN_ROUTE + '/:notificationId',
-        handler: _notificationScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.NOTIFICATION_SCREEN_ROUTE + '/:notificationId',
+    //     handler: _notificationScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.IMAGE_VIEWER_SCREEN_ROUTE + '/:newId/:newImageId',
-        handler: _imageViewerScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.IMAGE_VIEWER_SCREEN_ROUTE + '/:newId/:newImageId',
+    //     handler: _imageViewerScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(
-        RouteMap.EQUIPMENT_REQUEST_SCREEN_ROUTE +
-            '/:studentId/:erpCode/:name/:grade/:parallel',
-        handler: _equipmentRequestHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(
+    //     RouteMap.EQUIPMENT_REQUEST_SCREEN_ROUTE +
+    //         '/:studentId/:erpCode/:name/:grade/:parallel',
+    //     handler: _equipmentRequestHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(
-        RouteMap.HISTORICAL_DETAIL_EQUIPMENT_REQUEST +
-            '/:idRequest/:grade/:erpCode/:state/:date/:total',
-        handler: _historicalDetailHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(
+    //     RouteMap.HISTORICAL_DETAIL_EQUIPMENT_REQUEST +
+    //         '/:idRequest/:grade/:erpCode/:state/:date/:total',
+    //     handler: _historicalDetailHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.IMPORTATION_ROUTE,
-        handler: _importationHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.IMPORTATION_ROUTE,
+    //     handler: _importationHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.STUDENT_LICENSE_SCREEN_ROUTE,
-        handler: _studentLicenseScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.STUDENT_LICENSE_SCREEN_ROUTE,
+    //     handler: _studentLicenseScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(
-        RouteMap.LICENSE_LIST_SCREEN_ROUTE +
-            '/:studentId/:erpCode/:name/:grade/:parallel',
-        handler: _licenseListScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(
+    //     RouteMap.LICENSE_LIST_SCREEN_ROUTE +
+    //         '/:studentId/:erpCode/:name/:grade/:parallel',
+    //     handler: _licenseListScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
 
-    router.define(RouteMap.LICENSE_SCREEN_ROUTE,
-        handler: _licenseScreenHandler,
-        transitionType: TransitionType.inFromRight);
+    // router.define(RouteMap.LICENSE_SCREEN_ROUTE,
+    //     handler: _licenseScreenHandler,
+    //     transitionType: TransitionType.inFromRight);
   }
 
   Handler _versionScreenHandler = Handler(
@@ -178,8 +178,14 @@ class NavigationManager {
 //
   Handler _qrPaymentScreenHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, dynamic> params) =>
-        QrPaymentScreen(int.parse(params['studentId'][0]), params['erpCode'][0],
-            params['businessName'][0], params['nit'][0],params['currency'][0], params['documentType'][0], params['complement'][0]),
+        QrPaymentScreen(
+            int.parse(params['studentId'][0]),
+            params['erpCode'][0],
+            params['businessName'][0],
+            params['nit'][0],
+            params['currency'][0],
+            params['documentType'][0],
+            params['complement'][0]),
   );
 
   Handler _debtListScreenHandler = Handler(
@@ -246,12 +252,12 @@ class NavigationManager {
   Handler _annotationScreenHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, dynamic> params) =>
         AnnotationsScreen(
-          int.parse(params['studentId'][0]),
-          params['studentErpCode'][0],
-          params['studentName'][0],
-          params['grade'][0],
-          params['parallel'][0],
-        ),
+      int.parse(params['studentId'][0]),
+      params['studentErpCode'][0],
+      params['studentName'][0],
+      params['grade'][0],
+      params['parallel'][0],
+    ),
   );
 
   Handler _browserScreenHandler = Handler(
@@ -404,8 +410,15 @@ class NavigationManager {
         RouteMap.IMAGE_VIEWER_SCREEN_ROUTE + '/' + newId + '/' + newImageId);
   }
 
-  void startQrPaymentScreen(BuildContext context, String studentId,
-      String erpCode, String businessName, String nit, String currency, String documentType, String complement ) {
+  void startQrPaymentScreen(
+      BuildContext context,
+      String studentId,
+      String erpCode,
+      String businessName,
+      String nit,
+      String currency,
+      String documentType,
+      String complement) {
     _startScreen(
         context,
         RouteMap.QR_PAYMENT_SCREEN_ROUTE +
@@ -422,8 +435,7 @@ class NavigationManager {
             '/' +
             documentType +
             '/' +
-            complement
-    );
+            complement);
   }
 
   void startEquipmentRequestScreen(BuildContext context, String studentId,
