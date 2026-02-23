@@ -3,6 +3,7 @@ import 'package:colegio_americano/src/data/remote/response/ApiResponse.dart';
 import 'package:colegio_americano/src/data/remote/response/DebtDetailResponse.dart';
 import 'package:colegio_americano/src/data/remote/response/DebtResponse.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/DebtListScreenViewModel.dart';
 import 'package:colegio_americano/src/ui/widgets/FullScreenLoadingWidget.dart';
 import 'package:colegio_americano/src/ui/widgets/RetryErrorMessageWidget.dart';
@@ -12,7 +13,7 @@ import 'package:colegio_americano/src/utils/RootScreenMixin.dart';
 import 'package:colegio_americano/src/utils/Utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
+
 import 'package:tuple/tuple.dart';
 
 class DebtListScreen extends StatefulWidget {
@@ -59,18 +60,21 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
     return Column(
       children: [
         _cardInformationAnnotations(
-            widget.name, widget.erpCode, widget.grade, widget.parallel
-        ),
+            widget.name, widget.erpCode, widget.grade, widget.parallel),
         StreamBuilder(
           stream: _viewModel.invoiceDataStream,
           builder: (BuildContext context,
-              AsyncSnapshot<Tuple5<String, String, String, int, String>> snapshot) {
+              AsyncSnapshot<Tuple5<String, String, String, int, String>>
+                  snapshot) {
             if (!snapshot.hasData)
               return Visibility(visible: false, child: Container());
-            //TODO: Add DocumentType, Complement
             print("snapshot.data DebtListScreen: " + snapshot.data.toString());
-            return _invoiceInformation(snapshot.data!.item1,
-                snapshot.data!.item2, snapshot.data!.item3, snapshot.data!.item4, snapshot.data!.item5);
+            return _invoiceInformation(
+                snapshot.data!.item1,
+                snapshot.data!.item2,
+                snapshot.data!.item3,
+                snapshot.data!.item4,
+                snapshot.data!.item5);
           },
         ),
         StreamBuilder(
@@ -90,7 +94,7 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
 
             if (data == null)
               return RetryErrorMessageWidget(
-                      () {},
+                  () {},
                   AppLocalizations.of(context)
                       .translate('no_pending_debts_message'));
 
@@ -122,10 +126,10 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
       String studentName, String erpCode, String grade, String parallel) {
     return Container(
       child: Card(
-        color: Colors.red,
+        color: SccsColors.navyBlue,
         clipBehavior: Clip.antiAlias,
         shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -137,13 +141,8 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
               ),
               subtitle: Text(
                 AppLocalizations.of(context).translate('code_label') +
-                    erpCode +
-                    '\n' +
-                    AppLocalizations.of(context).translate('grade_label') +
-                    grade +
-                    '\n' +
-                    AppLocalizations.of(context).translate('parallel_label') +
-                    parallel,
+                    erpCode,
+
                 style: TextStyle(fontSize: 15.0, color: Colors.white),
               ),
               isThreeLine: true,
@@ -158,20 +157,26 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
     );
   }
 
-  _invoiceInformation(String businessName, String nit, String currency, int documentType, String complement) {
-    final String documentTypeString = [
+  _invoiceInformation(String businessName, String nit, String currency,
+      int documentType, String complement) {
+    final documentTypes = [
       'CI - Cedula de Identidad',
       'CEX - Cedula de Extranjeria',
       'PAS - Pasaporte',
       'OD - Otro Documento',
       'NIT - Numero de Identificacion Tributaria'
-    ][documentType - 1];
+    ];
+    // Validar que documentType esté en rango válido (1-5), usar valor por defecto si es 0
+    final int safeIndex = (documentType >= 1 && documentType <= 5)
+        ? documentType - 1
+        : 0; // Usar CI como valor por defecto
+    final String documentTypeString = documentTypes[safeIndex];
     return Container(
       child: Card(
-        color: Colors.red,
+        color: SccsColors.navyBlue,
         clipBehavior: Clip.antiAlias,
         shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -193,8 +198,7 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
                   Text(
                     'Tipo de Documento: ' + documentTypeString,
                     style: TextStyle(fontSize: 15.0, color: Colors.white),
-                  )
-                  ,
+                  ),
                   Text(
                     'Complemento: ' + complement,
                     style: TextStyle(fontSize: 15.0, color: Colors.white),
@@ -207,7 +211,8 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
               ),
               trailing: GestureDetector(
                 onTap: () {
-                  _asyncInputDialog(context, businessName, nit, currency, documentType, complement)
+                  _asyncInputDialog(context, businessName, nit, currency,
+                          documentType, complement)
                       .then((value) {
                     if (value == null) return;
                     if (value.isNotEmpty) {
@@ -229,8 +234,8 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
                           documentTypeValue.toString() +
                           " " +
                           complementValue);
-                      _viewModel.updateInvoiceData(
-                          businessNameValue, nitValue, currencyValue, documentTypeValue, complementValue);
+                      _viewModel.updateInvoiceData(businessNameValue, nitValue,
+                          currencyValue, documentTypeValue, complementValue);
                     }
                   });
                 },
@@ -248,7 +253,7 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
       child: Card(
         clipBehavior: Clip.antiAlias,
         shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -265,10 +270,11 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
                 visible: index == 0,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.red, // antes 'color'
+                    foregroundColor: SccsColors.navyBlue,
+                    backgroundColor: SccsColors.navyBlue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: BorderSide(color: Colors.red),
+                      side: BorderSide(color: SccsColors.navyBlue),
                     ),
                   ),
                   child: Text(
@@ -276,34 +282,28 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
-                    _currencyDialog(context, _viewModel.currency).then(
-                          (value) {
-                        if (value == null) return;
-                        _viewModel.updateCurrencyData(value);
-                        Utils.showConfirmAlert(
-                            context,
-                            AppLocalizations.of(context)
-                                .translate('alert_payment_title'),
-                            AppLocalizations.of(context)
+                    Utils.showConfirmAlert(
+                        context,
+                        AppLocalizations.of(context)
+                            .translate('alert_payment_title'),
+                        AppLocalizations.of(context)
                                 .translate('alert_payment_description') +
-                                'en ${_viewModel.currency}?',
-                            AppLocalizations.of(context)
-                                .translate('alert_accept_label'),
-                            AppLocalizations.of(context)
-                                .translate('alert_cancel_label'), () {
-                          _viewModel.navigation.startQrPaymentScreen(
-                            context,
-                            widget.studentId.toString(),
-                            widget.erpCode,
-                            _viewModel.businessName,
-                            _viewModel.nit,
-                            _viewModel.currency,
-                            _viewModel.documentType.toString(),
-                            _viewModel.complement,
-                          );
-                        });
-                      },
-                    );
+                            'en BOB?',
+                        AppLocalizations.of(context)
+                            .translate('alert_accept_label'),
+                        AppLocalizations.of(context)
+                            .translate('alert_cancel_label'), () {
+                      _viewModel.navigation.startQrPaymentScreen(
+                        context,
+                        widget.studentId.toString(),
+                        widget.erpCode,
+                        _viewModel.businessName,
+                        _viewModel.nit,
+                        _viewModel.currency,
+                        _viewModel.documentType.toString(),
+                        _viewModel.complement,
+                      );
+                    });
                   },
                 ),
               ),
@@ -330,116 +330,6 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
     );
   }
 
-  Future<String?> _currencyDialog(BuildContext context, String currencyValue) {
-    return showDialog<String>(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext conxtext) {
-          return AlertDialog(
-            title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text('Moneda de Pago')]),
-            content: StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
-                return new Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        '$kImagePath/icon_warning.png',
-                        package: 'rflutter_alert',
-                      ),
-                      Container(
-                        height: 10,
-                      ),
-                      Text(
-                        'Elija la moneda con la que quiere generar el código QR',
-                        textAlign: TextAlign.center,
-                      ),
-                      Container(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('USD'),
-                          Checkbox(
-                            fillColor:
-                            MaterialStateProperty.resolveWith(getColor),
-                            value: currencyValue == 'USD',
-                            onChanged: (value) {
-                              setState(() {
-                                currencyValue = 'USD';
-                              });
-                            },
-                          ),
-                          Text('BOB'),
-                          Checkbox(
-                            fillColor:
-                            MaterialStateProperty.resolveWith(getColor),
-                            value: currencyValue == 'BOB',
-                            onChanged: (value) {
-                              setState(() {
-                                currencyValue = 'BOB';
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.red, // antes 'color'
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(color: Colors.red),
-                              ),
-                            ),
-                            onPressed: () => Navigator.of(context).pop(currencyValue),
-                            child: Text(
-                              AppLocalizations.of(context)
-                                  .translate("alert_accept_label"),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                          Spacer(),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.red, // antes 'color'
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(color: Colors.red),
-                              ),
-                            ),
-                            onPressed: () => {Navigator.of(context).pop()},
-                            child: Text(
-                              AppLocalizations.of(context)
-                                  .translate("alert_cancel_label"),
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                          Spacer(),
-                        ],
-                      )
-                    ]);
-              },
-            ),
-          );
-        });
-  }
-
-  Color getColor(Set<MaterialState> states) {
-    const Set<MaterialState> interactiveStates = <MaterialState>{
-      MaterialState.pressed,
-      MaterialState.hovered,
-      MaterialState.focused,
-    };
-    return Colors.red;
-  }
-
   Future<String?> _asyncInputDialog(BuildContext context, String businessName,
       String nit, String currency, int documentType, String complement) async {
     Utils.isDialogActive = true;
@@ -452,8 +342,6 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
     int documentTypeValue = documentType;
     complementoController.text = complement;
 
-
-
     return showDialog<String>(
       context: context,
       barrierDismissible: false,
@@ -462,82 +350,82 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
           title: Text('Datos de facturación'),
           content: StatefulBuilder(
               builder: (BuildContext context, StateSetter setState) {
-                return new Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    TextField(
-                      controller: businessNameController,
-                      autofocus: true,
-                      keyboardType: TextInputType.text,
-                      decoration: new InputDecoration(labelText: 'Razón Social'),
-                    ),
-                    TextField(
-                      controller: nitController,
-                      autofocus: true,
-                      keyboardType: TextInputType.text,
-                      decoration: new InputDecoration(labelText: 'Nit'),
-                    ),
+            return new Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: businessNameController,
+                  autofocus: true,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(labelText: 'Razón Social'),
+                ),
+                TextField(
+                  controller: nitController,
+                  autofocus: true,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(labelText: 'Nit'),
+                ),
 
-                    DropdownButtonFormField<int>(
-                      value: documentTypeValue,
-                      isExpanded: true, // Esto arregla el overflow horizontal
-                      style: TextStyle(color: Colors.black, fontSize: 13),
-                      decoration: InputDecoration(
-                          labelText: 'Tipo de Documento',
-                          // isDense: true, // Hace el dropdown más compacto
-                          contentPadding: EdgeInsets.symmetric(vertical: 8)
+                DropdownButtonFormField<int>(
+                  value: documentTypeValue,
+                  isExpanded: true, // Esto arregla el overflow horizontal
+                  style: TextStyle(color: Colors.black, fontSize: 13),
+                  decoration: InputDecoration(
+                      labelText: 'Tipo de Documento',
+                      // isDense: true, // Hace el dropdown más compacto
+                      contentPadding: EdgeInsets.symmetric(vertical: 8)),
+                  items: [
+                    DropdownMenuItem<int>(
+                      value: 1,
+                      child: Text('CI - Cedula de Identidad'),
+                    ),
+                    DropdownMenuItem<int>(
+                      value: 2,
+                      child: Text('CEX - Cedula de Extranjeria'),
+                    ),
+                    DropdownMenuItem<int>(
+                      value: 3,
+                      child: Text('PAS - Pasaporte'),
+                    ),
+                    DropdownMenuItem<int>(
+                      value: 4,
+                      child: Text('OD - Otro Documento'),
+                    ),
+                    DropdownMenuItem<int>(
+                      value: 5,
+                      child: Container(
+                        constraints: BoxConstraints(
+                            maxWidth: 250), // Forzar ancho máximo
+                        child: Text(
+                          'NIT - Numero de Identificacion Tributaria',
+                          overflow: TextOverflow
+                              .visible, // Permite que el texto sea visible completamente
+                          softWrap: true, // Permite wrap de texto
+                        ),
                       ),
-                      items: [
-                        DropdownMenuItem<int>(
-                          value: 1,
-                          child: Text('CI - Cedula de Identidad'),
-                        ),
-                        DropdownMenuItem<int>(
-                          value: 2,
-                          child: Text('CEX - Cedula de Extranjeria'),
-                        ),
-                        DropdownMenuItem<int>(
-                          value: 3,
-                          child: Text('PAS - Pasaporte'),
-                        ),
-                        DropdownMenuItem<int>(
-                          value: 4,
-                          child: Text('OD - Otro Documento'),
-                        ),
-                        DropdownMenuItem<int>(
-                          value: 5,
-                          child: Container(
-                            constraints: BoxConstraints(maxWidth: 250), // Forzar ancho máximo
-                            child: Text(
-                              'NIT - Numero de Identificacion Tributaria',
-                              overflow: TextOverflow.visible, // Permite que el texto sea visible completamente
-                              softWrap: true, // Permite wrap de texto
-                            ),
-                          ),
-
-                        ),
-                      ],
-                      onChanged: (int? newValue) {
-                        setState(() {
-                          documentTypeValue = newValue!;
-                        });
-                      },
                     ),
-
-                    TextField(
-                      controller: complementoController,
-                      autofocus: true,
-                      keyboardType: TextInputType.text,
-                      decoration: new InputDecoration(labelText: 'Complemento'),
-                    ),
-
-                    // Container(
-                    //   height: 20,
-                    // ),
                   ],
-                );
-              }),
+                  onChanged: (int? newValue) {
+                    setState(() {
+                      documentTypeValue = newValue!;
+                    });
+                  },
+                ),
+
+                TextField(
+                  controller: complementoController,
+                  autofocus: true,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(labelText: 'Complemento'),
+                ),
+
+                // Container(
+                //   height: 20,
+                // ),
+              ],
+            );
+          }),
           actions: [
             TextButton(
               child: Text(
@@ -560,7 +448,15 @@ class _DebtListScreenState extends State<DebtListScreen> with RootScreenMixin {
                 String n = nitController.text;
                 int d = documentTypeValue;
                 String c = complementoController.text;
-                Navigator.of(context).pop(b + "|" + n + '|' + currencyValue + '|' + d.toString() + '|' + c);
+                Navigator.of(context).pop(b +
+                    "|" +
+                    n +
+                    '|' +
+                    currencyValue +
+                    '|' +
+                    d.toString() +
+                    '|' +
+                    c);
               },
             ),
           ],

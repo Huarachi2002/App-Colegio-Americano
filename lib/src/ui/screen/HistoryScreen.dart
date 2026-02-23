@@ -1,6 +1,7 @@
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:colegio_americano/src/data/local/AppDatabase.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/HistoryScreenViewModel.dart';
 import 'package:colegio_americano/src/ui/widgets/FullScreenLoadingWidget.dart';
 import 'package:colegio_americano/src/ui/widgets/RetryErrorMessageWidget.dart';
@@ -29,7 +30,8 @@ class _HistoryScreenState extends State<HistoryScreen> with RootScreenMixin {
   @override
   void initState() {
     super.initState();
-    _viewModel.updateHistorical(widget.studentId.toString(), widget.erpCode.toString());
+    _viewModel.updateHistorical(
+        widget.studentId.toString(), widget.erpCode.toString());
     BackButtonInterceptor.add(onBackPressed);
   }
 
@@ -50,31 +52,30 @@ class _HistoryScreenState extends State<HistoryScreen> with RootScreenMixin {
   }
 
   _bodyContent(BuildContext context) {
-      return StreamBuilder(
-        stream: _viewModel.stream,
-        builder: (BuildContext context,
-            AsyncSnapshot<RequestStatus<List<EquipmentRequest>>> snapshot) {
-          if (!snapshot.hasData) return FullScreenLoadingWidget();
-          var dataRequest = snapshot.data!;
+    return StreamBuilder(
+      stream: _viewModel.stream,
+      builder: (BuildContext context,
+          AsyncSnapshot<RequestStatus<List<EquipmentRequest>>> snapshot) {
+        if (!snapshot.hasData) return FullScreenLoadingWidget();
+        var dataRequest = snapshot.data!;
 
-          if (dataRequest.state == RequestStatusEnum.LOADING)
-            return FullScreenLoadingWidget();
+        if (dataRequest.state == RequestStatusEnum.LOADING)
+          return FullScreenLoadingWidget();
 
+        if (dataRequest.state == RequestStatusEnum.ERROR)
+          return RetryErrorMessageWidget(() {}, dataRequest.messageId);
 
-          if (dataRequest.state == RequestStatusEnum.ERROR)
-            return RetryErrorMessageWidget(() {}, dataRequest.messageId);
+        var data = dataRequest.data;
 
-          var data = dataRequest.data;
-
-          return Column(
-            children: [
-              _cardInformationAnnotations(
-                  widget.name, widget.erpCode, widget.grade, widget.parallel),
-              _listRequests(data)
-            ],
-          );
-        },
-      );
+        return Column(
+          children: [
+            _cardInformationAnnotations(
+                widget.name, widget.erpCode, widget.grade, widget.parallel),
+            _listRequests(data)
+          ],
+        );
+      },
+    );
   }
 
   _listRequests(List<EquipmentRequest> requests) {
@@ -98,7 +99,7 @@ class _HistoryScreenState extends State<HistoryScreen> with RootScreenMixin {
       String studentName, String erpCode, String grade, String parallel) {
     return Container(
       child: Card(
-        color: Colors.red,
+        color: SccsColors.navyBlue,
         clipBehavior: Clip.antiAlias,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -113,11 +114,7 @@ class _HistoryScreenState extends State<HistoryScreen> with RootScreenMixin {
               ),
               subtitle: Text(
                 'Codigo: ' +
-                    erpCode +
-                    '\nCurso: ' +
-                    grade +
-                    '\nParalelo: ' +
-                    parallel,
+                    erpCode,
                 style: TextStyle(fontSize: 15.0, color: Colors.white),
               ),
               isThreeLine: true,
@@ -168,10 +165,8 @@ class _HistoryScreenState extends State<HistoryScreen> with RootScreenMixin {
                         widget.parallel);
                   },
                 );
-              }
-          ),
-        ]
-    );
+              }),
+        ]);
   }
 
   _cardEquipmentRequest(EquipmentRequest request) {
@@ -199,10 +194,11 @@ class _HistoryScreenState extends State<HistoryScreen> with RootScreenMixin {
               isThreeLine: true,
               trailing: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.red, // antes 'color'
+                  foregroundColor: SccsColors.white,
+                  backgroundColor: SccsColors.navyBlue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(color: Colors.red),
+                    side: BorderSide(color: SccsColors.navyBlue),
                   ),
                 ),
                 onPressed: () {

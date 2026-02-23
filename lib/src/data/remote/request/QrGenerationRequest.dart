@@ -6,7 +6,6 @@ part 'QrGenerationRequest.g.dart';
 
 abstract class QrGenerationRequest
     implements Built<QrGenerationRequest, QrGenerationRequestBuilder> {
-
   QrGenerationRequest._();
 
   @BuiltValueField(wireName: 'erp_code')
@@ -15,9 +14,9 @@ abstract class QrGenerationRequest
   @BuiltValueField(wireName: 'debt_information')
   DebtInformationRequest get debtInformation;
 
-
-  factory QrGenerationRequest([updates(
-      QrGenerationRequestBuilder qrGenerationRequestBuilder)]) = _$QrGenerationRequest;
+  factory QrGenerationRequest(
+          [updates(QrGenerationRequestBuilder qrGenerationRequestBuilder)]) =
+      _$QrGenerationRequest;
 
   static Serializer<QrGenerationRequest> get serializer =>
       _$qrGenerationRequestSerializer;

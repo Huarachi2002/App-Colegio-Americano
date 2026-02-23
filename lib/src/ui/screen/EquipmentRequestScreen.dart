@@ -2,6 +2,7 @@ import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:colegio_americano/src/data/local/AppDatabase.dart';
 import 'package:colegio_americano/src/data/local/model/EquipmentRequestModel.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/EquipmentRequestScreenViewModel.dart';
 import 'package:colegio_americano/src/utils/RootScreenMixin.dart';
 import 'package:colegio_americano/src/utils/Utils.dart';
@@ -88,13 +89,14 @@ class _EquipmentRequestScreenState extends State<EquipmentRequestScreen>
               return ListTile(
                 title: Text(item.name ?? ""),
                 subtitle: Text(
-                  _generateItemText(item.price.toStringAsFixed(2),
-                      item.quantity.toStringAsFixed(0), '0', '0', false),
+                  _generateItemText((item.price ?? 0).toStringAsFixed(2),
+                      (item.quantity ?? 0).toStringAsFixed(0), '0', '0', false),
                 ),
                 trailing: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text((item.quantity * item.price).toStringAsFixed(2) +
+                    Text(((item.quantity ?? 0) * (item.price ?? 0))
+                            .toStringAsFixed(2) +
                         ' USD'),
                   ],
                 ),
@@ -171,7 +173,7 @@ class _EquipmentRequestScreenState extends State<EquipmentRequestScreen>
                 child: ListTile(
                   enabled: model.isOptional,
                   leading: Checkbox(
-                    activeColor: Colors.red,
+                    activeColor: SccsColors.navyBlue,
                     value: model.isSelected,
                     onChanged: (value) {
                       if (model.isOptional) {
@@ -290,7 +292,7 @@ class _EquipmentRequestScreenState extends State<EquipmentRequestScreen>
       String studentName, String erpCode, String grade, String parallel) {
     return Container(
       child: Card(
-        color: Colors.red,
+        color: SccsColors.navyBlue,
         clipBehavior: Clip.antiAlias,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -305,11 +307,7 @@ class _EquipmentRequestScreenState extends State<EquipmentRequestScreen>
               ),
               subtitle: Text(
                 'Codigo: ' +
-                    erpCode +
-                    '\nCurso: ' +
-                    grade +
-                    '\nParalelo: ' +
-                    parallel,
+                    erpCode,
                 style: TextStyle(fontSize: 15.0, color: Colors.white),
               ),
               isThreeLine: true,
@@ -376,7 +374,7 @@ class _EquipmentRequestScreenState extends State<EquipmentRequestScreen>
             TextButton(
               child: Text(
                 'Cancelar',
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(color: SccsColors.navyBlue),
               ),
               onPressed: () {
                 Utils.isDialogActive = false;
@@ -386,7 +384,7 @@ class _EquipmentRequestScreenState extends State<EquipmentRequestScreen>
             TextButton(
               child: Text(
                 'Guardar',
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(color: SccsColors.navyBlue),
               ),
               onPressed: () {
                 Utils.isDialogActive = false;

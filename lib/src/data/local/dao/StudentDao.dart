@@ -16,14 +16,17 @@ class StudentDao extends DatabaseAccessor<AppDatabase>
 
   Stream<List<StudentInformation>> getStudentsInformationStream() {
     final query = select(students).join([
-      innerJoin(grades, grades.id.equalsExp(students.gradeId)),
-      innerJoin(parallels, parallels.id.equalsExp(students.parallelId))
+      leftOuterJoin(grades, grades.id.equalsExp(students.gradeId)),
+      leftOuterJoin(parallels, parallels.id.equalsExp(students.parallelId))
     ]);
 
     return query.watch().map((rows) {
       return rows.map((row) {
-        return StudentInformation(row.readTable(students),
-            row.readTable(grades), row.readTable(parallels));
+        return StudentInformation(
+          row.readTable(students),
+          row.readTableOrNull(grades),
+          row.readTableOrNull(parallels),
+        );
       }).toList();
     });
   }
@@ -34,13 +37,16 @@ class StudentDao extends DatabaseAccessor<AppDatabase>
       ..where((students) => students.erpCode.equals(erpCode));
 
     final student = query.join([
-      innerJoin(grades, grades.id.equalsExp(students.gradeId)),
-      innerJoin(parallels, parallels.id.equalsExp(students.parallelId))
+      leftOuterJoin(grades, grades.id.equalsExp(students.gradeId)),
+      leftOuterJoin(parallels, parallels.id.equalsExp(students.parallelId))
     ]);
 
     return student.map((row) {
-      return StudentInformation(row.readTable(students), row.readTable(grades),
-          row.readTable(parallels));
+      return StudentInformation(
+        row.readTable(students),
+        row.readTableOrNull(grades),
+        row.readTableOrNull(parallels),
+      );
     }).watchSingle();
   }
 

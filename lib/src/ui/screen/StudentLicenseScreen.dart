@@ -52,7 +52,9 @@ class _StudentLicenseScreenState extends State<StudentLicenseScreen>
           if (data != null) {
             return Column(
               children: <Widget>[
-                CardInformation(text: AppLocalizations.of(context).translate('info_view_license')),
+                CardInformation(
+                    text: AppLocalizations.of(context)
+                        .translate('info_view_license')),
                 _listStudents(data)
               ],
             );
@@ -80,8 +82,8 @@ class _StudentLicenseScreenState extends State<StudentLicenseScreen>
                       studentInformationList[index].student.id.toString(),
                       studentInformationList[index].student.erpCode ?? "",
                       studentInformationList[index].student.name ?? "",
-                      studentInformationList[index].grade.name ?? "",
-                      studentInformationList[index].parallel.name ?? "");
+                      studentInformationList[index].grade?.name ?? "",
+                      studentInformationList[index].parallel?.name ?? "");
                 },
                 child: _cardStudent(studentInformationList[index]));
           }),
@@ -101,11 +103,7 @@ class _StudentLicenseScreenState extends State<StudentLicenseScreen>
               //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
               title: Text(studentInformation.student.name!),
               subtitle: Text('Codigo: ' +
-                  (studentInformation.student.erpCode ?? "") +
-                  '\nCurso: ' +
-                  (studentInformation.grade.name ?? "") +
-                  '\nParalelo: ' +
-                  (studentInformation.parallel.name ?? "")),
+                  (studentInformation.student.erpCode ?? "")),
               isThreeLine: true,
             ),
           ],

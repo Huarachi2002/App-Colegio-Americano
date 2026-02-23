@@ -7,7 +7,7 @@ part of 'InvoiceDetailRequest.dart';
 // **************************************************************************
 
 Serializer<InvoiceDetailRequest> _$invoiceDetailRequestSerializer =
-new _$InvoiceDetailRequestSerializer();
+    new _$InvoiceDetailRequestSerializer();
 
 class _$InvoiceDetailRequestSerializer
     implements StructuredSerializer<InvoiceDetailRequest> {
@@ -128,21 +128,21 @@ class _$InvoiceDetailRequest extends InvoiceDetailRequest {
   final String? complement;
 
   factory _$InvoiceDetailRequest(
-      [void Function(InvoiceDetailRequestBuilder)? updates]) =>
+          [void Function(InvoiceDetailRequestBuilder)? updates]) =>
       (new InvoiceDetailRequestBuilder()..update(updates))._build();
 
   _$InvoiceDetailRequest._(
       {this.idGenerateInvoice,
-        this.nitCiFact,
-        this.invoiceName,
-        this.modifyInvoiceData,
-        this.documentType,
-        this.complement})
+      this.nitCiFact,
+      this.invoiceName,
+      this.modifyInvoiceData,
+      this.documentType,
+      this.complement})
       : super._();
 
   @override
   InvoiceDetailRequest rebuild(
-      void Function(InvoiceDetailRequestBuilder) updates) =>
+          void Function(InvoiceDetailRequestBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
@@ -177,12 +177,12 @@ class _$InvoiceDetailRequest extends InvoiceDetailRequest {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'InvoiceDetailRequest')
-      ..add('idGenerateInvoice', idGenerateInvoice)
-      ..add('nitCiFact', nitCiFact)
-      ..add('invoiceName', invoiceName)
-      ..add('modifyInvoiceData', modifyInvoiceData)
-      ..add('documentType', documentType)
-      ..add('complement', complement))
+          ..add('idGenerateInvoice', idGenerateInvoice)
+          ..add('nitCiFact', nitCiFact)
+          ..add('invoiceName', invoiceName)
+          ..add('modifyInvoiceData', modifyInvoiceData)
+          ..add('documentType', documentType)
+          ..add('complement', complement))
         .toString();
   }
 }

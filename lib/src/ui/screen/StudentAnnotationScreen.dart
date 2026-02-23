@@ -13,7 +13,8 @@ class StudentAnnotationScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _StudentAnnotationScreenState();
 }
 
-class _StudentAnnotationScreenState extends State<StudentAnnotationScreen> with RootScreenMixin {
+class _StudentAnnotationScreenState extends State<StudentAnnotationScreen>
+    with RootScreenMixin {
   StudentAnnotationViewModel _viewModel = StudentAnnotationViewModel();
 
   @override
@@ -21,7 +22,6 @@ class _StudentAnnotationScreenState extends State<StudentAnnotationScreen> with 
     super.initState();
     BackButtonInterceptor.add(onBackPressed);
     _viewModel.appDatabase.studentDao.getStudentsInformationStream();
-
   }
 
   @override
@@ -37,33 +37,34 @@ class _StudentAnnotationScreenState extends State<StudentAnnotationScreen> with 
         key: scaffoldKey,
         appBar: _appBar(context),
         drawer: DrawerMenu(),
-        body: _bodyContent(context)
-    );
+        body: _bodyContent(context));
   }
 
-  _bodyContent(BuildContext context){
+  _bodyContent(BuildContext context) {
     return StreamBuilder(
-      stream: _viewModel.appDatabase.studentDao.getStudentsInformationStream(),
-      builder: (BuildContext context,
-          AsyncSnapshot<List<StudentInformation>> snapshot){
-        if (!snapshot.hasData) return FullScreenLoadingWidget();
-        var data = snapshot.data;
-        if (data != null){
-          return Column(
-            children: <Widget>[
-              CardInformation(text: AppLocalizations.of(context).translate('info_view_annotations')),
-              _listStudents(data)
-              /*Expanded(flex: 1, child: _categoriesTitle()),*/
-            ],
-          );
-        }else{
-          return FullScreenLoadingWidget();
-        }
-      }
-    );
+        stream:
+            _viewModel.appDatabase.studentDao.getStudentsInformationStream(),
+        builder: (BuildContext context,
+            AsyncSnapshot<List<StudentInformation>> snapshot) {
+          if (!snapshot.hasData) return FullScreenLoadingWidget();
+          var data = snapshot.data;
+          if (data != null) {
+            return Column(
+              children: <Widget>[
+                CardInformation(
+                    text: AppLocalizations.of(context)
+                        .translate('info_view_annotations')),
+                _listStudents(data)
+                /*Expanded(flex: 1, child: _categoriesTitle()),*/
+              ],
+            );
+          } else {
+            return FullScreenLoadingWidget();
+          }
+        });
   }
 
-  _listStudents(List<StudentInformation> studentInformationList){
+  _listStudents(List<StudentInformation> studentInformationList) {
     return Expanded(
       flex: 6,
       child: ListView.builder(
@@ -76,13 +77,13 @@ class _StudentAnnotationScreenState extends State<StudentAnnotationScreen> with 
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
                 onTap: () {
-                  _viewModel.navigation
-                      .startAnnotationScreen(context,
-                      studentInformationList[index].student.id.toString(),
-                      studentInformationList[index].student.erpCode!,
-                      studentInformationList[index].student.name!,
-                      studentInformationList[index].grade.name!,
-                      studentInformationList[index].parallel.name!,
+                  _viewModel.navigation.startAnnotationScreen(
+                    context,
+                    studentInformationList[index].student.id.toString(),
+                    studentInformationList[index].student.erpCode!,
+                    studentInformationList[index].student.name!,
+                    studentInformationList[index].grade?.name ?? "",
+                    studentInformationList[index].parallel?.name ?? "",
                   );
                 },
                 child: _cardStudent(studentInformationList[index]));
@@ -90,32 +91,32 @@ class _StudentAnnotationScreenState extends State<StudentAnnotationScreen> with 
     );
   }
 
- _cardStudent(StudentInformation studentInformation){
-   return Container(
-     child: Card(
-       clipBehavior: Clip.antiAlias,
-       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-       child: Column(
-         crossAxisAlignment: CrossAxisAlignment.start,
-         children: <Widget>[
-           ListTile(
-             //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-             title: Text(studentInformation.student.name ?? ""),
-             subtitle: Text('Codigo: ' + (studentInformation.student.erpCode ?? "") +
-                 '\nCurso: ' + (studentInformation.grade.name ?? "") +
-                 '\nParalelo: ' + (studentInformation.parallel.name ?? "")),
-             isThreeLine: true,
-           ),
-         ],
-       ),
-     ),
-   );
- }
+  _cardStudent(StudentInformation studentInformation) {
+    return Container(
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            ListTile(
+              //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+              title: Text(studentInformation.student.name ?? ""),
+              subtitle: Text('Codigo: ' +
+                  (studentInformation.student.erpCode ?? "")),
+              isThreeLine: true,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   _appBar(BuildContext context) {
     return AppBar(
-      title: Text(
-          AppLocalizations.of(context).translate('menu_title_enrolled_children')),
+      title: Text(AppLocalizations.of(context)
+          .translate('menu_title_enrolled_children')),
     );
   }
 }

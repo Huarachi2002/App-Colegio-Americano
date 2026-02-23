@@ -106,16 +106,17 @@ class EquipmentRequestScreenViewModel extends BaseViewModel {
         filteredResult.add(model);
       } else {
         if (isRegistrationInterval) {
-          if (equipmentSearched.quantity < equipmentSearched.max! &&
+          if ((equipmentSearched.quantity ?? 0) < equipmentSearched.max! &&
               element.single == 'No') {
-            var newMax = equipmentSearched.max! - equipmentSearched.quantity;
+            var newMax =
+                equipmentSearched.max! - (equipmentSearched.quantity ?? 0);
             EquipmentRequestModel model = EquipmentRequestModel();
             model.id = element.id;
             model.name = element.name!;
             model.price = element.price!;
             model.quantity = 0;
             model.min = 0;
-            model.max = newMax;
+            model.max = newMax.toDouble();
             model.isSingle = element.single == 'Si';
             model.isOptional = true;
             model.isSelected = false;
@@ -202,7 +203,7 @@ class EquipmentRequestScreenViewModel extends BaseViewModel {
           ..date = ''
           ..total = total.toStringAsFixed(2)
           ..studentId = studentId.toString()
-          ..priceListId = student.priceListId.toString()
+          ..priceListId = '' // Campo eliminado de Students, usar valor vacío
           ..token = token
           ..equipmentListId = selected[0].equipmentListId.toString()
           ..academicManagementId = academicManagement.id.toString()

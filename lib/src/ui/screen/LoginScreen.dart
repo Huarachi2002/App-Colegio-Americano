@@ -1,7 +1,9 @@
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
 import 'package:colegio_americano/src/navigation/menu/DrawerMenu.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/LoginScreenViewModel.dart';
+import 'package:colegio_americano/src/ui/widgets/SccsLogo.dart';
 import 'package:colegio_americano/src/utils/RootScreenMixin.dart';
 import 'package:flutter/material.dart';
 
@@ -47,6 +49,9 @@ class _LoginScreenState extends State<LoginScreen> with RootScreenMixin {
           child: new Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+              const SizedBox(height: 24),
+              const SccsLogo.vertical(height: 120),
+              const SizedBox(height: 16),
               _formSection()
             ],
           ),
@@ -190,14 +195,17 @@ class _LoginScreenState extends State<LoginScreen> with RootScreenMixin {
             ),
             new Container(
               alignment: Alignment.bottomRight,
-              child: new GestureDetector(
-                onTap: () => _submit(context),
+              child: ElevatedButton(
+                onPressed: () => _submit(context),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: SccsColors.navyBlue,
+                  foregroundColor: SccsColors.white,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                ),
                 child: Text(
                   AppLocalizations.of(context).translate('login_button_label'),
-                  style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/BrowserScreenViewModel.dart';
 import 'package:colegio_americano/src/ui/widgets/FullScreenLoadingWidget.dart';
 import 'package:colegio_americano/src/utils/RequestStatus.dart';
@@ -11,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class BrowserScreen extends StatefulWidget {
-
   final String studentErpCode;
 
   BrowserScreen(this.studentErpCode);
@@ -19,7 +19,7 @@ class BrowserScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _BrowserScreenState();
 }
 
-class _BrowserScreenState extends State<BrowserScreen> with RootScreenMixin{
+class _BrowserScreenState extends State<BrowserScreen> with RootScreenMixin {
   BrowserScreenViewModel _viewModel = BrowserScreenViewModel();
   late final WebViewController controller;
   bool _isWebViewReady = false;
@@ -79,7 +79,8 @@ class _BrowserScreenState extends State<BrowserScreen> with RootScreenMixin{
             _viewModel.navigation.navigateBack(context);
           },
         ),
-        title: Text(AppLocalizations.of(context).translate('menu_title_report_card')),
+        title: Text(
+            AppLocalizations.of(context).translate('menu_title_report_card')),
       ),
       body: SafeArea(
         child: StreamBuilder<RequestStatus<String>>(
@@ -118,7 +119,7 @@ class _BrowserScreenState extends State<BrowserScreen> with RootScreenMixin{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.error_outline, size: 60, color: Colors.red),
+            Icon(Icons.error_outline, size: 60, color: SccsColors.red),
             SizedBox(height: 20),
             Text(
               "Error al cargar la boleta de calificaciones",
@@ -131,8 +132,8 @@ class _BrowserScreenState extends State<BrowserScreen> with RootScreenMixin{
                 _viewModel.getApiToken(context);
               },
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.red,
+                foregroundColor: SccsColors.white,
+                backgroundColor: SccsColors.navyBlue,
               ),
               child: Text('Reintentar'),
             ),
@@ -143,7 +144,8 @@ class _BrowserScreenState extends State<BrowserScreen> with RootScreenMixin{
   }
 
   Widget _buildWebViewWithPlaceholder(String apiToken) {
-    final url = '${SyncConstants.SERVER_URL}/api/report_card?erp_code=${widget.studentErpCode}&api_token=$apiToken';
+    final url =
+        '${SyncConstants.SERVER_URL}/api/report_card?erp_code=${widget.studentErpCode}&api_token=$apiToken';
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.loadRequest(Uri.parse(url));
     });
@@ -153,7 +155,6 @@ class _BrowserScreenState extends State<BrowserScreen> with RootScreenMixin{
           visible: !_isWebViewReady || _isPageLoading,
           child: FullScreenLoadingWidget(),
         ),
-
         Opacity(
           opacity: (_isWebViewReady && !_isPageLoading) ? 1.0 : 0.0,
           child: WebViewWidget(

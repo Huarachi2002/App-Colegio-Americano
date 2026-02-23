@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 
 class FullScreenLoadingWidget extends StatelessWidget {
   @override
@@ -9,7 +10,7 @@ class FullScreenLoadingWidget extends StatelessWidget {
       child: Center(
         child: SpinKitThreeBounce(
           size: 100,
-          color: Colors.redAccent,
+          color: SccsColors.navyBlue,
         ),
       ),
     );

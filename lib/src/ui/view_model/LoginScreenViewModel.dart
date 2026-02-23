@@ -46,9 +46,8 @@ class LoginScreenViewModel extends BaseViewModel with LoginPreferenceMixin {
         ..deviceToken = uuid);
 
       EasyLoading.show(status: 'Verificando usuario...');
-      Utils.retryFuture(
-          SyncConstants.ATTEMPTS,
-              () => apiService.login(request)).then((response) async {
+      Utils.retryFuture(SyncConstants.ATTEMPTS, () => apiService.login(request))
+          .then((response) async {
         try {
           await saveLoginPreference(response.body!.data!);
 
@@ -58,15 +57,19 @@ class LoginScreenViewModel extends BaseViewModel with LoginPreferenceMixin {
             SyncConstants.ATTEMPTS,
             () => apiService.getFatherCode(int.parse(idFather)),
           );
-          if(getFatherResponse.isSuccessful){
+          if (getFatherResponse.isSuccessful) {
             loginPreference.setFatherErpCode(getFatherResponse.body!.data!);
-            await Utils.issueToken();
+            // Comentado: Módulo de licencias deshabilitado en esta versión
+            // await Utils.issueToken();
           }
 
           await loginPreference.setLoggedIn(true);
           await EasyLoading.dismiss();
+          // Importamos solo estudiantes para el módulo de pagos
           navigation.startImportationScreen(context);
-        } catch (exception) {
+        } catch (exception, stackTrace) {
+          print('[LOGIN ERROR] Exception: $exception');
+          print('[LOGIN ERROR] StackTrace: $stackTrace');
           await EasyLoading.dismiss();
           EasyLoading.showError('Datos incorrectos',
               duration: Duration(seconds: 2), dismissOnTap: true);

@@ -29,25 +29,32 @@ class BuiltValueConverter extends JsonConverter {
     print("Response: ${response.body}");
     final Response result = await super.convertResponse(response);
     Map<String, dynamic> decodedResponse = json.decode(response.body);
-    _handleException(decodedResponse['code'], decodedResponse['message']);
+
+    // Nuevo formato: status (string) en lugar de code (int)
+    String status = decodedResponse['status'] ?? 'error';
+    String message = decodedResponse['message'] ?? '';
+
+    // Verificar si la respuesta fue exitosa
+    _handleException(status, message);
+
     dynamic dataResponse = decodedResponse['data'];
     dynamic convertedObject =
         UtilDeserializer.convertToCustomObject<SingleItemType>(dataResponse);
 
     ApiResponse apiResponse = dataResponse is List
         ? ApiResponse<BuiltList<SingleItemType>>((apiResponse) => apiResponse
-          ..code = decodedResponse['code']
-          ..message = decodedResponse['message']
+          ..code = (status == 'success') ? 0 : -1
+          ..message = message
           ..data = convertedObject)
         : ApiResponse<SingleItemType>((apiResponse) => apiResponse
-          ..code = decodedResponse['code']
-          ..message = decodedResponse['message']
+          ..code = (status == 'success') ? 0 : -1
+          ..message = message
           ..data = convertedObject);
 
     return result.copyWith<BodyType>(body: apiResponse as BodyType);
   }
 
-  void _handleException(int code, String message) {
-    if (code < 0) throw ApiException(code, message);
+  void _handleException(String status, String message) {
+    if (status != 'success') throw ApiException(-1, message);
   }
 }

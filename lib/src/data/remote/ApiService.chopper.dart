@@ -31,7 +31,7 @@ final class _$ApiService extends ApiService {
 
   @override
   Future<Response<ApiResponse<AcademicManagementResponse>>>
-  academicManagement() {
+      academicManagement() {
     final Uri $url = Uri.parse('/api/academic_management');
     final Request $request = Request(
       'GET',
@@ -130,7 +130,7 @@ final class _$ApiService extends ApiService {
 
   @override
   Future<Response<ApiResponse<BuiltList<EquipmentListsResponse>>>>
-  equipmentLists(String body) {
+      equipmentLists(String body) {
     final Uri $url = Uri.parse('/api/equipment_list');
     final $body = body;
     final Request $request = Request(
@@ -144,15 +144,12 @@ final class _$ApiService extends ApiService {
   }
 
   @override
-  Future<Response<ApiResponse<BuiltList<StudentsResponse>>>> students(
-      String body) {
+  Future<Response<ApiResponse<BuiltList<StudentsResponse>>>> students() {
     final Uri $url = Uri.parse('/api/students');
-    final $body = body;
     final Request $request = Request(
       'POST',
       $url,
       client.baseUrl,
-      body: $body,
     );
     return client.send<ApiResponse<BuiltList<StudentsResponse>>,
         StudentsResponse>($request);
@@ -160,7 +157,7 @@ final class _$ApiService extends ApiService {
 
   @override
   Future<Response<ApiResponse<BuiltList<EquipmentPriceListsResponse>>>>
-  equipmentPriceLists(String body) {
+      equipmentPriceLists(String body) {
     final Uri $url = Uri.parse('/api/equipment_prices');
     final $body = body;
     final Request $request = Request(
@@ -189,7 +186,7 @@ final class _$ApiService extends ApiService {
 
   @override
   Future<Response<ApiResponse<BuiltList<EquipmentRequestResponse>>>>
-  getEquipmentRequestHistorical(StudentRequest body) {
+      getEquipmentRequestHistorical(StudentRequest body) {
     final Uri $url = Uri.parse('/api/equipment_request_historical');
     final $body = body;
     final Request $request = Request(
@@ -203,7 +200,8 @@ final class _$ApiService extends ApiService {
   }
 
   @override
-  Future<Response<ApiResponse<DebtResponse>>> getPendingDebts(String body) {
+  Future<Response<ApiResponse<DebtResponse>>> getPendingDebts(
+      StudentCodeRequest body) {
     final Uri $url = Uri.parse('/api/pending_debt_consultation');
     final $body = body;
     final Request $request = Request(
@@ -216,8 +214,9 @@ final class _$ApiService extends ApiService {
   }
 
   @override
-  Future<Response<ApiResponse<DebtInformationRequest>>> getDebt(String body) {
-    final Uri $url = Uri.parse('/api/debt_consultation_test');
+  Future<Response<ApiResponse<DebtInformationRequest>>> getDebt(
+      StudentCodeRequest body) {
+    final Uri $url = Uri.parse('/api/debt_consultation');
     final $body = body;
     final Request $request = Request(
       'POST',
@@ -288,7 +287,7 @@ final class _$ApiService extends ApiService {
 
   @override
   Future<Response<ApiResponse<BuiltList<NotificationResponse>>>>
-  getNotifications() {
+      getNotifications() {
     final Uri $url = Uri.parse('/api/sync/notifications');
     final Request $request = Request(
       'GET',

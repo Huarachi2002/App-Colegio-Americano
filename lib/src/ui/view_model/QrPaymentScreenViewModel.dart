@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 
+import 'package:colegio_americano/src/data/remote/request/StudentCodeRequest.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:colegio_americano/src/data/remote/configuration/SyncConstants.dart';
 import 'package:colegio_americano/src/data/remote/request/ChargeDetailRequest.dart';
@@ -26,7 +27,7 @@ import 'package:built_collection/built_collection.dart';
 class QrPaymentScreenViewModel extends BaseViewModel {
   bool isSaving = false;
   late StreamController<RequestStatus<Tuple2<DebtInformationRequest, String>>>
-  _streamController;
+      _streamController;
 
   QrPaymentScreenViewModel() : super() {
     _streamController = StreamController<
@@ -34,7 +35,7 @@ class QrPaymentScreenViewModel extends BaseViewModel {
   }
 
   Function(RequestStatus<Tuple2<DebtInformationRequest, String>>)
-  get streamSink => _streamController.sink.add;
+      get streamSink => _streamController.sink.add;
 
   Stream<RequestStatus<Tuple2<DebtInformationRequest, String>>> get stream =>
       _streamController.stream;
@@ -47,12 +48,20 @@ class QrPaymentScreenViewModel extends BaseViewModel {
     _streamController.close();
   }
 
-  generateQrCode(BuildContext context, String erpCode, String businessName,
-      String nit, String documentType, String complement, String currency) async {
+  generateQrCode(
+      BuildContext context,
+      String erpCode,
+      String businessName,
+      String nit,
+      String documentType,
+      String complement,
+      String currency) async {
     streamSink(RequestStatus.loadingState());
     try {
+      StudentCodeRequest studentCodeRequest =
+          StudentCodeRequest((b) => b..studentErpCode = erpCode);
       var response1 = await Utils.retryFuture(
-          SyncConstants.ATTEMPTS, () => apiService.getDebt(erpCode));
+          SyncConstants.ATTEMPTS, () => apiService.getDebt(studentCodeRequest));
 
       if (!response1.isSuccessful) throw "error";
 
@@ -66,7 +75,7 @@ class QrPaymentScreenViewModel extends BaseViewModel {
       DebtInformationRequest debtInformationRequest = response1.body!.data!;
 
       ChargeDetailRequestBuilder chargeDetailRequestBuilder =
-      ChargeDetailRequestBuilder();
+          ChargeDetailRequestBuilder();
       chargeDetailRequestBuilder.paymentPeriod =
           debtInformationRequest.chargeDetail.paymentPeriod;
       chargeDetailRequestBuilder.paymentConcept =
@@ -89,7 +98,7 @@ class QrPaymentScreenViewModel extends BaseViewModel {
       chargeDetailRequestBuilder.paymentPenalty = paymentPenalty;
 
       InvoiceDetailRequestBuilder invoiceDetailRequestBuilder =
-      InvoiceDetailRequestBuilder();
+          InvoiceDetailRequestBuilder();
       invoiceDetailRequestBuilder.idGenerateInvoice =
           debtInformationRequest.invoiceDetail.idGenerateInvoice;
       invoiceDetailRequestBuilder.modifyInvoiceData =
@@ -100,16 +109,15 @@ class QrPaymentScreenViewModel extends BaseViewModel {
 
       invoiceDetailRequestBuilder.complement = complement;
 
-
       DebtInformationRequestBuilder debtInformationRequestBuilder =
-      DebtInformationRequestBuilder();
+          DebtInformationRequestBuilder();
       debtInformationRequestBuilder.debtorName =
           debtInformationRequest.debtorName;
 
-      debtInformationRequestBuilder.amount = currency == 'USD'
+      debtInformationRequestBuilder.amount = currency == 'BOB'
           ? debtInformationRequest.amount
           : _convertWithExchangeRate(
-          debtInformationRequest.amount, exchangeRate);
+              debtInformationRequest.amount, exchangeRate);
 
       //debtInformationRequestBuilder.transactionId =  "${999000 + Random.secure().nextInt(200)}";
       debtInformationRequestBuilder.transactionId =
@@ -125,14 +133,14 @@ class QrPaymentScreenViewModel extends BaseViewModel {
       builder.debtInformation = debtInformationRequestBuilder;
 
       var response2 = await Utils.retryFuture(SyncConstants.ATTEMPTS,
-              () => apiService.generateQrPayment(builder.build()));
+          () => apiService.generateQrPayment(builder.build()));
 
       if (!response2.isSuccessful) throw "error";
 
       String qrCode = response2.body!.data!;
       if (qrCode == null) throw Exception();
       Tuple2<DebtInformationRequest, String> tuple =
-      Tuple2(debtInformationRequest, qrCode);
+          Tuple2(debtInformationRequest, qrCode);
       this.currency = currency;
       this.amount = debtInformationRequestBuilder.amount!;
       streamSink(RequestStatus.successState(tuple));
@@ -166,14 +174,10 @@ class QrPaymentScreenViewModel extends BaseViewModel {
             EasyLoading.showInfo(
                 'Se requieren permisos para guardar imágenes. Por favor actívalos en Configuración.',
                 duration: Duration(seconds: 5),
-                dismissOnTap: true
-            );
+                dismissOnTap: true);
           } else {
-            EasyLoading.showInfo(
-                'Permiso denegado para guardar el código QR.',
-                duration: Duration(seconds: 3),
-                dismissOnTap: true
-            );
+            EasyLoading.showInfo('Permiso denegado para guardar el código QR.',
+                duration: Duration(seconds: 3), dismissOnTap: true);
           }
           isSaving = false;
           return;
@@ -181,14 +185,10 @@ class QrPaymentScreenViewModel extends BaseViewModel {
       }
 
       await _saveQrCode(qrCode);
-
     } catch (e) {
       print("Error solicitando permisos: $e");
-      EasyLoading.showError(
-          'Error al guardar el QR: $e',
-          duration: Duration(seconds: 3),
-          dismissOnTap: true
-      );
+      EasyLoading.showError('Error al guardar el QR: $e',
+          duration: Duration(seconds: 3), dismissOnTap: true);
       isSaving = false;
     }
   }

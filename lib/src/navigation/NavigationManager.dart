@@ -129,9 +129,9 @@ class NavigationManager {
     //     handler: _historicalDetailHandler,
     //     transitionType: TransitionType.inFromRight);
 
-    // router.define(RouteMap.IMPORTATION_ROUTE,
-    //     handler: _importationHandler,
-    //     transitionType: TransitionType.inFromRight);
+    router.define(RouteMap.IMPORTATION_ROUTE,
+        handler: _importationHandler,
+        transitionType: TransitionType.inFromRight);
 
     // router.define(RouteMap.STUDENT_LICENSE_SCREEN_ROUTE,
     //     handler: _studentLicenseScreenHandler,

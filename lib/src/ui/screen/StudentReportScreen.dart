@@ -14,14 +14,14 @@ class StudentReportScreen extends StatefulWidget {
   State<StatefulWidget> createState() => _StudentReportScreenState();
 }
 
-class _StudentReportScreenState extends State<StudentReportScreen> with RootScreenMixin {
+class _StudentReportScreenState extends State<StudentReportScreen>
+    with RootScreenMixin {
   StudentReportViewModel _viewModel = StudentReportViewModel();
 
   @override
   void initState() {
     super.initState();
     BackButtonInterceptor.add(onBackPressed);
-
   }
 
   @override
@@ -37,32 +37,33 @@ class _StudentReportScreenState extends State<StudentReportScreen> with RootScre
         key: scaffoldKey,
         appBar: _appBar(context),
         drawer: DrawerMenu(),
-        body: _bodyContent(context)
-    );
+        body: _bodyContent(context));
   }
 
-  _bodyContent(BuildContext context){
+  _bodyContent(BuildContext context) {
     return StreamBuilder(
-        stream: _viewModel.appDatabase.studentDao.getStudentsInformationStream(),
+        stream:
+            _viewModel.appDatabase.studentDao.getStudentsInformationStream(),
         builder: (BuildContext context,
-            AsyncSnapshot<List<StudentInformation>> snapshot){
+            AsyncSnapshot<List<StudentInformation>> snapshot) {
           if (!snapshot.hasData) return FullScreenLoadingWidget();
           var data = snapshot.data;
-          if (data != null){
+          if (data != null) {
             return Column(
               children: <Widget>[
-                CardInformation(text: AppLocalizations.of(context).translate('info_view_reports')),
+                CardInformation(
+                    text: AppLocalizations.of(context)
+                        .translate('info_view_reports')),
                 _listStudents(data)
               ],
             );
-          }else{
+          } else {
             return FullScreenLoadingWidget();
           }
-        }
-    );
+        });
   }
 
-  _listStudents(List<StudentInformation> studentInformationList){
+  _listStudents(List<StudentInformation> studentInformationList) {
     return Expanded(
       flex: 6,
       child: ListView.builder(
@@ -75,27 +76,28 @@ class _StudentReportScreenState extends State<StudentReportScreen> with RootScre
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
                 onTap: () {
-                  _viewModel.navigation.startBrowserScreen(context, studentInformationList[index].student.erpCode!);
+                  _viewModel.navigation.startBrowserScreen(
+                      context, studentInformationList[index].student.erpCode!);
                 },
                 child: _cardStudent(studentInformationList[index]));
           }),
     );
   }
 
-  _cardStudent(StudentInformation studentInformation){
+  _cardStudent(StudentInformation studentInformation) {
     return Container(
       child: Card(
         clipBehavior: Clip.antiAlias,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ListTile(
               //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
               title: Text(studentInformation.student.name!),
-              subtitle: Text('Codigo: ' + (studentInformation.student.erpCode??"") +
-                  '\nCurso: ' + (studentInformation.grade.name ?? "") +
-                  '\nParalelo: ' + (studentInformation.parallel.name ?? "")),
+              subtitle: Text('Codigo: ' +
+                  (studentInformation.student.erpCode ?? "")),
               isThreeLine: true,
             ),
           ],
@@ -106,8 +108,8 @@ class _StudentReportScreenState extends State<StudentReportScreen> with RootScre
 
   _appBar(BuildContext context) {
     return AppBar(
-      title: Text(
-          AppLocalizations.of(context).translate('menu_title_enrolled_children')),
+      title: Text(AppLocalizations.of(context)
+          .translate('menu_title_enrolled_children')),
     );
   }
 }

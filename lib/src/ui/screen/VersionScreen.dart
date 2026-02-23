@@ -1,4 +1,4 @@
-
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/VersionScreenViewModel.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
@@ -49,10 +49,10 @@ class _VersionScreenState extends State<VersionScreen> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.redAccent,
+                backgroundColor: SccsColors.navyBlue,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(0.0),
-                  side: BorderSide(color: Colors.redAccent),
+                  borderRadius: BorderRadius.circular(8.0),
+                  side: BorderSide(color: SccsColors.navyBlue),
                 ),
               ),
             ),
@@ -62,6 +62,7 @@ class _VersionScreenState extends State<VersionScreen> {
     );
   }
 
+  // TODO: Cambiar el url de la tienda
   _launchURL() async {
     const urlAndroid =
         'https://play.google.com/store/apps/details?id=com.icorebiz.casantacruz';

@@ -194,11 +194,7 @@ class _LicenseScreenState extends State<LicenseScreen> with RootScreenMixin {
               ),
               subtitle: Text(
                 'Codigo: ' +
-                    erpCode +
-                    '\nCurso: ' +
-                    grade +
-                    '\nParalelo: ' +
-                    parallel,
+                    erpCode,
                 style: TextStyle(fontSize: 15.0, color: Colors.white),
               ),
               isThreeLine: true,

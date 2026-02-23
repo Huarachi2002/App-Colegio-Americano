@@ -13,6 +13,7 @@ import 'package:colegio_americano/src/data/remote/request/LoginRequest.dart';
 import 'package:colegio_americano/src/data/remote/request/QrGenerationRequest.dart';
 import 'package:colegio_americano/src/data/remote/request/RegisterDeviceRequest.dart';
 import 'package:colegio_americano/src/data/remote/request/StudentRequest.dart';
+import 'package:colegio_americano/src/data/remote/request/StudentCodeRequest.dart';
 import 'package:colegio_americano/src/data/remote/request/UpdateDeviceRequest.dart';
 import 'package:colegio_americano/src/data/remote/response/AbsencesResponse.dart';
 import 'package:colegio_americano/src/data/remote/response/AcademicManagementResponse.dart';
@@ -78,6 +79,7 @@ part 'Serializers.g.dart';
   AnnotationsResponse,
   AbsencesResponse,
   StudentRequest,
+  StudentCodeRequest,
   EquipmentRequestDetailResponse,
   EquipmentRequestHeaderResponse,
   EquipmentRequestResponse,
@@ -131,6 +133,9 @@ final Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(PriceListsResponse)]),
           () => new ListBuilder<PriceListsResponse>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(StudentsResponse)]),
+          () => new ListBuilder<StudentsResponse>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(DetailsEquipmentListsResponse)]),

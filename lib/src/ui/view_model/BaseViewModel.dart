@@ -1,7 +1,7 @@
 import 'package:colegio_americano/src/data/local/AppDatabase.dart';
 import 'package:colegio_americano/src/data/local/preference/LoginPreference.dart';
 import 'package:colegio_americano/src/data/remote/ApiService.dart';
-import 'package:colegio_americano/src/data/remote/ExternalApiService.dart';
+
 import 'package:colegio_americano/src/data/remote/LicenseApiService.dart';
 import 'package:colegio_americano/src/navigation/NavigationManager.dart';
 import 'package:get_it/get_it.dart';
@@ -12,7 +12,7 @@ abstract class BaseViewModel {
   late NavigationManager navigation;
   late AppDatabase appDatabase;
   late ApiService apiService;
-  late ExternalApiService externalApiService;
+
   late LicenseApiService licenseApiService;
 
   BaseViewModel() {
@@ -21,7 +21,7 @@ abstract class BaseViewModel {
     navigation = _injector<NavigationManager>();
     appDatabase = _injector<AppDatabase>();
     apiService = _injector<ApiService>();
-    externalApiService = _injector<ExternalApiService>();
+
     licenseApiService = _injector<LicenseApiService>();
   }
 

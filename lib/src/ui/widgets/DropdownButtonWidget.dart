@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 
 class DropdownButtonWidget extends StatelessWidget {
   String dropdownValue = 'One';
@@ -16,7 +17,7 @@ class DropdownButtonWidget extends StatelessWidget {
       iconSize: 24,
       underline: Container(
         height: 2,
-        color: Colors.red,
+        color: SccsColors.navyBlue,
       ),
       onChanged: (String? newValue) {
         setState(() {

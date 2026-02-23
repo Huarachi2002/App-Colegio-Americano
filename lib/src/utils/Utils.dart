@@ -6,6 +6,7 @@ import 'package:colegio_americano/src/data/remote/LicenseApiService.dart';
 import 'package:colegio_americano/src/data/remote/exception/ApiException.dart';
 import 'package:colegio_americano/src/data/remote/request/AuthRequest.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -94,7 +95,7 @@ class Utils {
     if (acceptMessage.isNotEmpty) {
       list.add(
         DialogButton(
-          color: Colors.red,
+          color: SccsColors.navyBlue,
           child: Text(
             acceptMessage,
             style: TextStyle(color: Colors.white, fontSize: 20),
@@ -109,7 +110,7 @@ class Utils {
     }
     list.add(
       DialogButton(
-        color: Colors.red,
+        color: SccsColors.navyBlue,
         child: Text(
           denyMessage,
           style: TextStyle(color: Colors.white, fontSize: 20),

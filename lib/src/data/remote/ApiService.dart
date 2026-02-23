@@ -9,6 +9,7 @@ import 'package:colegio_americano/src/data/remote/request/LoginRequest.dart';
 import 'package:colegio_americano/src/data/remote/request/QrGenerationRequest.dart';
 import 'package:colegio_americano/src/data/remote/request/RegisterDeviceRequest.dart';
 import 'package:colegio_americano/src/data/remote/request/StudentRequest.dart';
+import 'package:colegio_americano/src/data/remote/request/StudentCodeRequest.dart';
 import 'package:colegio_americano/src/data/remote/request/UpdateDeviceRequest.dart';
 import 'package:colegio_americano/src/data/remote/response/AcademicManagementResponse.dart';
 import 'package:colegio_americano/src/data/remote/response/AnnotationResponse.dart';
@@ -41,7 +42,7 @@ abstract class ApiService extends ChopperService {
   Future<Response<ApiResponse<AcademicManagementResponse>>>
       academicManagement();
 
-  @Post(path: 'sync/news')
+  @Post(path: 'news_url')
   Future<Response<ApiResponse<BuiltList<NewsResponse>>>> getNews(
       @Body() String? body);
 
@@ -69,8 +70,7 @@ abstract class ApiService extends ChopperService {
       equipmentLists(@Body() String body);
 
   @Post(path: 'students')
-  Future<Response<ApiResponse<BuiltList<StudentsResponse>>>> students(
-      @Body() String body);
+  Future<Response<ApiResponse<BuiltList<StudentsResponse>>>> students();
 
   @Post(path: 'equipment_prices')
   Future<Response<ApiResponse<BuiltList<EquipmentPriceListsResponse>>>>
@@ -86,15 +86,15 @@ abstract class ApiService extends ChopperService {
 
   @Post(path: 'pending_debt_consultation')
   Future<Response<ApiResponse<DebtResponse>>> getPendingDebts(
-      @Body() String body);
+      @Body() StudentCodeRequest body);
 
   @Post(
       path:
           'debt_consultation') // TODO: Check if this is correct in Backend -- Cambiar cuando acabe las pruebas a debt_consultation
   Future<Response<ApiResponse<DebtInformationRequest>>> getDebt(
-      @Body() String body);
+      @Body() StudentCodeRequest body);
 
-  @Post(path: 'generate_qr_test')
+  @Post(path: 'generate_qr')
   Future<Response<ApiResponse<String>>> generateQrPayment(
       @Body() QrGenerationRequest body);
 

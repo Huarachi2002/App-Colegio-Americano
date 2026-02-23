@@ -1,6 +1,7 @@
 import 'package:back_button_interceptor/back_button_interceptor.dart';
 import 'package:colegio_americano/src/data/local/AppDatabase.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/HistoryDetailScreenViewModel.dart';
 import 'package:colegio_americano/src/ui/widgets/FullScreenLoadingWidget.dart';
 import 'package:colegio_americano/src/utils/RootScreenMixin.dart';
@@ -49,7 +50,8 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen>
 
   _bodyContent(BuildContext context) {
     return FutureBuilder(
-      future: _viewModel.appDatabase.detailEquipmentRequest(widget.idRequest).get(),
+      future:
+          _viewModel.appDatabase.detailEquipmentRequest(widget.idRequest).get(),
       builder: (BuildContext context,
           AsyncSnapshot<List<DetailEquipmentRequestResult>> snapshot) {
         if (!snapshot.hasData) return FullScreenLoadingWidget();
@@ -112,7 +114,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen>
       String grade, String erpCode, String state, String date, String total) {
     return Container(
       child: Card(
-        color: Colors.red,
+        color: SccsColors.navyBlue,
         clipBehavior: Clip.antiAlias,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),

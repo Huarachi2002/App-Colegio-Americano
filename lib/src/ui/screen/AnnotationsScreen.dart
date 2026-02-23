@@ -5,6 +5,7 @@ import 'package:colegio_americano/src/data/local/pojo/AnnotationsPojo.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
 import 'package:colegio_americano/src/data/local/pojo/ChildrensPojo.dart';
 import 'package:colegio_americano/src/data/local/pojo/InformationsPojo.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/AnnotationsScreenViewModel.dart';
 import 'package:colegio_americano/src/ui/widgets/FullScreenLoadingWidget.dart';
 import 'package:colegio_americano/src/utils/RequestStatus.dart';
@@ -181,7 +182,7 @@ class _AnnotationsScreenState extends State<AnnotationsScreen>
   _cardInformationAnnotations() {
     return Container(
       child: Card(
-        color: Colors.red,
+        color: SccsColors.navyBlue,
         clipBehavior: Clip.antiAlias,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -196,11 +197,7 @@ class _AnnotationsScreenState extends State<AnnotationsScreen>
               ),
               subtitle: Text(
                   'Codigo: ' +
-                      widget.studentErpCode +
-                      '\nCurso: ' +
-                      widget.grade +
-                      '\nParalelo: ' +
-                      widget.parallel,
+                      widget.studentErpCode,
                   style: TextStyle(fontSize: 15.0, color: Colors.white)),
               isThreeLine: true,
               leading: Icon(

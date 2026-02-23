@@ -4,6 +4,7 @@ import 'package:colegio_americano/src/data/remote/configuration/SyncConstants.da
 import 'package:colegio_americano/src/data/remote/response/LicenseListResponse.dart';
 import 'package:colegio_americano/src/data/remote/response/LicenseResponse.dart';
 import 'package:colegio_americano/src/localization/AppLocalizations.dart';
+import 'package:colegio_americano/src/theme/SccsColors.dart';
 import 'package:colegio_americano/src/ui/view_model/LicenseListScreenViewModel.dart';
 import 'package:colegio_americano/src/ui/widgets/FullScreenLoadingWidget.dart';
 import 'package:colegio_americano/src/ui/widgets/RetryErrorMessageWidget.dart';
@@ -68,14 +69,15 @@ class _LicenseListScreenState extends State<LicenseListScreen>
         if (data.state == RequestStatusEnum.ERROR)
           return RetryErrorMessageWidget(
             () => _viewModel.getLicenses(context, widget.erpCode),
-            AppLocalizations.of(context).translate("retry_license_requests_message"),
+            AppLocalizations.of(context)
+                .translate("retry_license_requests_message"),
           );
 
         if (data.data.isEmpty)
           return RetryErrorMessageWidget(
               () => _viewModel.getLicenses(context, widget.erpCode),
-              AppLocalizations.of(context).translate('no_license_requests_message')
-          );
+              AppLocalizations.of(context)
+                  .translate('no_license_requests_message'));
         return Column(
           children: [
             _cardInformationAnnotations(
@@ -112,7 +114,7 @@ class _LicenseListScreenState extends State<LicenseListScreen>
       String studentName, String erpCode, String grade, String parallel) {
     return Container(
       child: Card(
-        color: Colors.red,
+        color: SccsColors.navyBlue,
         clipBehavior: Clip.antiAlias,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
@@ -127,11 +129,7 @@ class _LicenseListScreenState extends State<LicenseListScreen>
               ),
               subtitle: Text(
                 'Codigo: ' +
-                    erpCode +
-                    '\nCurso: ' +
-                    grade +
-                    '\nParalelo: ' +
-                    parallel,
+                    erpCode,
                 style: TextStyle(fontSize: 15.0, color: Colors.white),
               ),
               isThreeLine: true,

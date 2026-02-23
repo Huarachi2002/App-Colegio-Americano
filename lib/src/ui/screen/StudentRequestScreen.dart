@@ -50,8 +50,11 @@ class _StudentRequestScreenState extends State<StudentRequestScreen>
         if (data != null) {
           return Column(
             children: [
-              CardInformation(text: AppLocalizations.of(context).translate('info_view_request')),
-              _listStudents(data)],
+              CardInformation(
+                  text: AppLocalizations.of(context)
+                      .translate('info_view_request')),
+              _listStudents(data)
+            ],
           );
         } else {
           return FullScreenLoadingWidget();
@@ -79,8 +82,8 @@ class _StudentRequestScreenState extends State<StudentRequestScreen>
                       student.student.id.toString(),
                       student.student.erpCode ?? "",
                       student.student.name ?? "",
-                      student.grade.name ?? "",
-                      student.parallel.name ?? "");
+                      student.grade?.name ?? "",
+                      student.parallel?.name ?? "");
                 },
                 child: _cardStudent(studentInformationList[index]));
           }),
@@ -100,11 +103,7 @@ class _StudentRequestScreenState extends State<StudentRequestScreen>
               //contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
               title: Text(studentInformation.student.name ?? ""),
               subtitle: Text('Codigo: ' +
-                  (studentInformation.student.erpCode ?? "") +
-                  '\nCurso: ' +
-                  (studentInformation.grade.name ?? "") +
-                  '\nParalelo: ' +
-                  (studentInformation.parallel.name ?? "")),
+                  (studentInformation.student.erpCode ?? "")),
               isThreeLine: true,
             ),
           ],

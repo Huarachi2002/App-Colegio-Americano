@@ -111,7 +111,7 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -120,6 +120,13 @@ class AppDatabase extends _$AppDatabase {
             await migrator.createTable(licenseRequests);
             await migrator.createTable(subjects);
             await migrator.createTable(gradesSubjects);
+          }
+          if (from < 3) {
+            // Migración v3: Recrear tabla students con nueva estructura
+            // Eliminados: invoice_name, nit, price_list_id, created_by
+            // Cambiado: state de text a int
+            await migrator.deleteTable('students');
+            await migrator.createTable(students);
           }
         },
       );

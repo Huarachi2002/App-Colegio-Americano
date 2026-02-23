@@ -5,7 +5,7 @@ import 'package:colegio_americano/src/data/local/AppDatabase.dart';
 import 'package:colegio_americano/src/data/local/preference/LoginPreference.dart';
 import 'package:colegio_americano/src/data/local/preference/NotificationPreference.dart';
 import 'package:colegio_americano/src/data/remote/ApiService.dart';
-import 'package:colegio_americano/src/data/remote/ExternalApiService.dart';
+
 import 'package:colegio_americano/src/data/remote/LicenseApiService.dart';
 import 'package:colegio_americano/src/data/remote/response/VersionResponse.dart';
 import 'package:colegio_americano/src/navigation/NavigationManager.dart';
@@ -95,7 +95,6 @@ class SplashScreenViewModel {
     injector
         .registerSingleton<NotificationPreference>(NotificationPreference());
     injector.registerSingleton<AppDatabase>(AppDatabase());
-    injector.registerSingleton<ExternalApiService>(ExternalApiService.create());
 
     if (!injector.isRegistered<LoginPreference>()) {
       injector.registerSingleton<LoginPreference>(LoginPreference());

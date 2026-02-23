@@ -179,6 +179,16 @@ class Type extends DataClass implements Insertable<Type> {
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
+  Type copyWithCompanion(TypesCompanion data) {
+    return Type(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Type(')
@@ -600,6 +610,24 @@ class New extends DataClass implements Insertable<New> {
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
+  New copyWithCompanion(NewsCompanion data) {
+    return New(
+      id: data.id.present ? data.id.value : this.id,
+      title: data.title.present ? data.title.value : this.title,
+      description:
+          data.description.present ? data.description.value : this.description,
+      path: data.path.present ? data.path.value : this.path,
+      notifiable:
+          data.notifiable.present ? data.notifiable.value : this.notifiable,
+      state: data.state.present ? data.state.value : this.state,
+      newsTypeId:
+          data.newsTypeId.present ? data.newsTypeId.value : this.newsTypeId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('New(')
@@ -896,6 +924,14 @@ class NewImage extends DataClass implements Insertable<NewImage> {
         path: path.present ? path.value : this.path,
         newId: newId ?? this.newId,
       );
+  NewImage copyWithCompanion(NewsImagesCompanion data) {
+    return NewImage(
+      id: data.id.present ? data.id.value : this.id,
+      path: data.path.present ? data.path.value : this.path,
+      newId: data.newId.present ? data.newId.value : this.newId,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('NewImage(')
@@ -1145,6 +1181,16 @@ class Notification extends DataClass implements Insertable<Notification> {
         message: message.present ? message.value : this.message,
         url: url.present ? url.value : this.url,
       );
+  Notification copyWithCompanion(NotificationsCompanion data) {
+    return Notification(
+      id: data.id.present ? data.id.value : this.id,
+      code: data.code.present ? data.code.value : this.code,
+      title: data.title.present ? data.title.value : this.title,
+      message: data.message.present ? data.message.value : this.message,
+      url: data.url.present ? data.url.value : this.url,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Notification(')
@@ -1457,6 +1503,18 @@ class User extends DataClass implements Insertable<User> {
         userType: userType.present ? userType.value : this.userType,
         apiToken: apiToken.present ? apiToken.value : this.apiToken,
       );
+  User copyWithCompanion(UsersCompanion data) {
+    return User(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      entityType:
+          data.entityType.present ? data.entityType.value : this.entityType,
+      entityId: data.entityId.present ? data.entityId.value : this.entityId,
+      userType: data.userType.present ? data.userType.value : this.userType,
+      apiToken: data.apiToken.present ? data.apiToken.value : this.apiToken,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('User(')
@@ -1680,6 +1738,13 @@ class Grade extends DataClass implements Insertable<Grade> {
         id: id ?? this.id,
         name: name.present ? name.value : this.name,
       );
+  Grade copyWithCompanion(GradesCompanion data) {
+    return Grade(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Grade(')
@@ -1847,6 +1912,13 @@ class Parallel extends DataClass implements Insertable<Parallel> {
         id: id ?? this.id,
         name: name.present ? name.value : this.name,
       );
+  Parallel copyWithCompanion(ParallelsCompanion data) {
+    return Parallel(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Parallel(')
@@ -2039,6 +2111,14 @@ class Equipment extends DataClass implements Insertable<Equipment> {
         name: name.present ? name.value : this.name,
         shortName: shortName.present ? shortName.value : this.shortName,
       );
+  Equipment copyWithCompanion(EquipmentsCompanion data) {
+    return Equipment(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      shortName: data.shortName.present ? data.shortName.value : this.shortName,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Equipment(')
@@ -2221,6 +2301,13 @@ class PriceList extends DataClass implements Insertable<PriceList> {
         id: id ?? this.id,
         name: name.present ? name.value : this.name,
       );
+  PriceList copyWithCompanion(PriceListsCompanion data) {
+    return PriceList(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('PriceList(')
@@ -2548,6 +2635,21 @@ class EquipmentList extends DataClass implements Insertable<EquipmentList> {
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
+  EquipmentList copyWithCompanion(EquipmentListsCompanion data) {
+    return EquipmentList(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      state: data.state.present ? data.state.value : this.state,
+      academicManagementId: data.academicManagementId.present
+          ? data.academicManagementId.value
+          : this.academicManagementId,
+      gradeId: data.gradeId.present ? data.gradeId.value : this.gradeId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('EquipmentList(')
@@ -2725,22 +2827,11 @@ class $StudentsTable extends Students with TableInfo<$StudentsTable, Student> {
   late final GeneratedColumn<String> email = GeneratedColumn<String>(
       'email', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _invoiceNameMeta =
-      const VerificationMeta('invoiceName');
-  @override
-  late final GeneratedColumn<String> invoiceName = GeneratedColumn<String>(
-      'invoice_name', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
-  static const VerificationMeta _nitMeta = const VerificationMeta('nit');
-  @override
-  late final GeneratedColumn<String> nit = GeneratedColumn<String>(
-      'nit', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _stateMeta = const VerificationMeta('state');
   @override
-  late final GeneratedColumn<String> state = GeneratedColumn<String>(
+  late final GeneratedColumn<int> state = GeneratedColumn<int>(
       'state', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _fatherIdMeta =
       const VerificationMeta('fatherId');
   @override
@@ -2758,18 +2849,6 @@ class $StudentsTable extends Students with TableInfo<$StudentsTable, Student> {
   @override
   late final GeneratedColumn<int> parallelId = GeneratedColumn<int>(
       'parallel_id', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _priceListIdMeta =
-      const VerificationMeta('priceListId');
-  @override
-  late final GeneratedColumn<int> priceListId = GeneratedColumn<int>(
-      'price_list_id', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _createdByMeta =
-      const VerificationMeta('createdBy');
-  @override
-  late final GeneratedColumn<int> createdBy = GeneratedColumn<int>(
-      'created_by', aliasedName, true,
       type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _createdAtMeta =
       const VerificationMeta('createdAt');
@@ -2789,14 +2868,10 @@ class $StudentsTable extends Students with TableInfo<$StudentsTable, Student> {
         name,
         erpCode,
         email,
-        invoiceName,
-        nit,
         state,
         fatherId,
         gradeId,
         parallelId,
-        priceListId,
-        createdBy,
         createdAt,
         updatedAt
       ];
@@ -2825,16 +2900,6 @@ class $StudentsTable extends Students with TableInfo<$StudentsTable, Student> {
       context.handle(
           _emailMeta, email.isAcceptableOrUnknown(data['email']!, _emailMeta));
     }
-    if (data.containsKey('invoice_name')) {
-      context.handle(
-          _invoiceNameMeta,
-          invoiceName.isAcceptableOrUnknown(
-              data['invoice_name']!, _invoiceNameMeta));
-    }
-    if (data.containsKey('nit')) {
-      context.handle(
-          _nitMeta, nit.isAcceptableOrUnknown(data['nit']!, _nitMeta));
-    }
     if (data.containsKey('state')) {
       context.handle(
           _stateMeta, state.isAcceptableOrUnknown(data['state']!, _stateMeta));
@@ -2852,16 +2917,6 @@ class $StudentsTable extends Students with TableInfo<$StudentsTable, Student> {
           _parallelIdMeta,
           parallelId.isAcceptableOrUnknown(
               data['parallel_id']!, _parallelIdMeta));
-    }
-    if (data.containsKey('price_list_id')) {
-      context.handle(
-          _priceListIdMeta,
-          priceListId.isAcceptableOrUnknown(
-              data['price_list_id']!, _priceListIdMeta));
-    }
-    if (data.containsKey('created_by')) {
-      context.handle(_createdByMeta,
-          createdBy.isAcceptableOrUnknown(data['created_by']!, _createdByMeta));
     }
     if (data.containsKey('created_at')) {
       context.handle(_createdAtMeta,
@@ -2888,22 +2943,14 @@ class $StudentsTable extends Students with TableInfo<$StudentsTable, Student> {
           .read(DriftSqlType.string, data['${effectivePrefix}erp_code']),
       email: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}email']),
-      invoiceName: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}invoice_name']),
-      nit: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}nit']),
       state: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}state']),
+          .read(DriftSqlType.int, data['${effectivePrefix}state']),
       fatherId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}father_id']),
       gradeId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}grade_id']),
       parallelId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}parallel_id']),
-      priceListId: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}price_list_id']),
-      createdBy: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}created_by']),
       createdAt: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}created_at']),
       updatedAt: attachedDatabase.typeMapping
@@ -2922,14 +2969,10 @@ class Student extends DataClass implements Insertable<Student> {
   final String? name;
   final String? erpCode;
   final String? email;
-  final String? invoiceName;
-  final String? nit;
-  final String? state;
+  final int? state;
   final int? fatherId;
   final int? gradeId;
   final int? parallelId;
-  final int? priceListId;
-  final int? createdBy;
   final String? createdAt;
   final String? updatedAt;
   const Student(
@@ -2937,14 +2980,10 @@ class Student extends DataClass implements Insertable<Student> {
       this.name,
       this.erpCode,
       this.email,
-      this.invoiceName,
-      this.nit,
       this.state,
       this.fatherId,
       this.gradeId,
       this.parallelId,
-      this.priceListId,
-      this.createdBy,
       this.createdAt,
       this.updatedAt});
   @override
@@ -2960,14 +2999,8 @@ class Student extends DataClass implements Insertable<Student> {
     if (!nullToAbsent || email != null) {
       map['email'] = Variable<String>(email);
     }
-    if (!nullToAbsent || invoiceName != null) {
-      map['invoice_name'] = Variable<String>(invoiceName);
-    }
-    if (!nullToAbsent || nit != null) {
-      map['nit'] = Variable<String>(nit);
-    }
     if (!nullToAbsent || state != null) {
-      map['state'] = Variable<String>(state);
+      map['state'] = Variable<int>(state);
     }
     if (!nullToAbsent || fatherId != null) {
       map['father_id'] = Variable<int>(fatherId);
@@ -2977,12 +3010,6 @@ class Student extends DataClass implements Insertable<Student> {
     }
     if (!nullToAbsent || parallelId != null) {
       map['parallel_id'] = Variable<int>(parallelId);
-    }
-    if (!nullToAbsent || priceListId != null) {
-      map['price_list_id'] = Variable<int>(priceListId);
-    }
-    if (!nullToAbsent || createdBy != null) {
-      map['created_by'] = Variable<int>(createdBy);
     }
     if (!nullToAbsent || createdAt != null) {
       map['created_at'] = Variable<String>(createdAt);
@@ -3002,10 +3029,6 @@ class Student extends DataClass implements Insertable<Student> {
           : Value(erpCode),
       email:
           email == null && nullToAbsent ? const Value.absent() : Value(email),
-      invoiceName: invoiceName == null && nullToAbsent
-          ? const Value.absent()
-          : Value(invoiceName),
-      nit: nit == null && nullToAbsent ? const Value.absent() : Value(nit),
       state:
           state == null && nullToAbsent ? const Value.absent() : Value(state),
       fatherId: fatherId == null && nullToAbsent
@@ -3017,12 +3040,6 @@ class Student extends DataClass implements Insertable<Student> {
       parallelId: parallelId == null && nullToAbsent
           ? const Value.absent()
           : Value(parallelId),
-      priceListId: priceListId == null && nullToAbsent
-          ? const Value.absent()
-          : Value(priceListId),
-      createdBy: createdBy == null && nullToAbsent
-          ? const Value.absent()
-          : Value(createdBy),
       createdAt: createdAt == null && nullToAbsent
           ? const Value.absent()
           : Value(createdAt),
@@ -3040,14 +3057,10 @@ class Student extends DataClass implements Insertable<Student> {
       name: serializer.fromJson<String?>(json['name']),
       erpCode: serializer.fromJson<String?>(json['erpCode']),
       email: serializer.fromJson<String?>(json['email']),
-      invoiceName: serializer.fromJson<String?>(json['invoiceName']),
-      nit: serializer.fromJson<String?>(json['nit']),
-      state: serializer.fromJson<String?>(json['state']),
+      state: serializer.fromJson<int?>(json['state']),
       fatherId: serializer.fromJson<int?>(json['fatherId']),
       gradeId: serializer.fromJson<int?>(json['gradeId']),
       parallelId: serializer.fromJson<int?>(json['parallelId']),
-      priceListId: serializer.fromJson<int?>(json['priceListId']),
-      createdBy: serializer.fromJson<int?>(json['createdBy']),
       createdAt: serializer.fromJson<String?>(json['createdAt']),
       updatedAt: serializer.fromJson<String?>(json['updatedAt']),
     );
@@ -3060,14 +3073,10 @@ class Student extends DataClass implements Insertable<Student> {
       'name': serializer.toJson<String?>(name),
       'erpCode': serializer.toJson<String?>(erpCode),
       'email': serializer.toJson<String?>(email),
-      'invoiceName': serializer.toJson<String?>(invoiceName),
-      'nit': serializer.toJson<String?>(nit),
-      'state': serializer.toJson<String?>(state),
+      'state': serializer.toJson<int?>(state),
       'fatherId': serializer.toJson<int?>(fatherId),
       'gradeId': serializer.toJson<int?>(gradeId),
       'parallelId': serializer.toJson<int?>(parallelId),
-      'priceListId': serializer.toJson<int?>(priceListId),
-      'createdBy': serializer.toJson<int?>(createdBy),
       'createdAt': serializer.toJson<String?>(createdAt),
       'updatedAt': serializer.toJson<String?>(updatedAt),
     };
@@ -3078,14 +3087,10 @@ class Student extends DataClass implements Insertable<Student> {
           Value<String?> name = const Value.absent(),
           Value<String?> erpCode = const Value.absent(),
           Value<String?> email = const Value.absent(),
-          Value<String?> invoiceName = const Value.absent(),
-          Value<String?> nit = const Value.absent(),
-          Value<String?> state = const Value.absent(),
+          Value<int?> state = const Value.absent(),
           Value<int?> fatherId = const Value.absent(),
           Value<int?> gradeId = const Value.absent(),
           Value<int?> parallelId = const Value.absent(),
-          Value<int?> priceListId = const Value.absent(),
-          Value<int?> createdBy = const Value.absent(),
           Value<String?> createdAt = const Value.absent(),
           Value<String?> updatedAt = const Value.absent()}) =>
       Student(
@@ -3093,17 +3098,29 @@ class Student extends DataClass implements Insertable<Student> {
         name: name.present ? name.value : this.name,
         erpCode: erpCode.present ? erpCode.value : this.erpCode,
         email: email.present ? email.value : this.email,
-        invoiceName: invoiceName.present ? invoiceName.value : this.invoiceName,
-        nit: nit.present ? nit.value : this.nit,
         state: state.present ? state.value : this.state,
         fatherId: fatherId.present ? fatherId.value : this.fatherId,
         gradeId: gradeId.present ? gradeId.value : this.gradeId,
         parallelId: parallelId.present ? parallelId.value : this.parallelId,
-        priceListId: priceListId.present ? priceListId.value : this.priceListId,
-        createdBy: createdBy.present ? createdBy.value : this.createdBy,
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
+  Student copyWithCompanion(StudentsCompanion data) {
+    return Student(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+      erpCode: data.erpCode.present ? data.erpCode.value : this.erpCode,
+      email: data.email.present ? data.email.value : this.email,
+      state: data.state.present ? data.state.value : this.state,
+      fatherId: data.fatherId.present ? data.fatherId.value : this.fatherId,
+      gradeId: data.gradeId.present ? data.gradeId.value : this.gradeId,
+      parallelId:
+          data.parallelId.present ? data.parallelId.value : this.parallelId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Student(')
@@ -3111,14 +3128,10 @@ class Student extends DataClass implements Insertable<Student> {
           ..write('name: $name, ')
           ..write('erpCode: $erpCode, ')
           ..write('email: $email, ')
-          ..write('invoiceName: $invoiceName, ')
-          ..write('nit: $nit, ')
           ..write('state: $state, ')
           ..write('fatherId: $fatherId, ')
           ..write('gradeId: $gradeId, ')
           ..write('parallelId: $parallelId, ')
-          ..write('priceListId: $priceListId, ')
-          ..write('createdBy: $createdBy, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
@@ -3126,21 +3139,8 @@ class Student extends DataClass implements Insertable<Student> {
   }
 
   @override
-  int get hashCode => Object.hash(
-      id,
-      name,
-      erpCode,
-      email,
-      invoiceName,
-      nit,
-      state,
-      fatherId,
-      gradeId,
-      parallelId,
-      priceListId,
-      createdBy,
-      createdAt,
-      updatedAt);
+  int get hashCode => Object.hash(id, name, erpCode, email, state, fatherId,
+      gradeId, parallelId, createdAt, updatedAt);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -3149,14 +3149,10 @@ class Student extends DataClass implements Insertable<Student> {
           other.name == this.name &&
           other.erpCode == this.erpCode &&
           other.email == this.email &&
-          other.invoiceName == this.invoiceName &&
-          other.nit == this.nit &&
           other.state == this.state &&
           other.fatherId == this.fatherId &&
           other.gradeId == this.gradeId &&
           other.parallelId == this.parallelId &&
-          other.priceListId == this.priceListId &&
-          other.createdBy == this.createdBy &&
           other.createdAt == this.createdAt &&
           other.updatedAt == this.updatedAt);
 }
@@ -3166,14 +3162,10 @@ class StudentsCompanion extends UpdateCompanion<Student> {
   final Value<String?> name;
   final Value<String?> erpCode;
   final Value<String?> email;
-  final Value<String?> invoiceName;
-  final Value<String?> nit;
-  final Value<String?> state;
+  final Value<int?> state;
   final Value<int?> fatherId;
   final Value<int?> gradeId;
   final Value<int?> parallelId;
-  final Value<int?> priceListId;
-  final Value<int?> createdBy;
   final Value<String?> createdAt;
   final Value<String?> updatedAt;
   const StudentsCompanion({
@@ -3181,14 +3173,10 @@ class StudentsCompanion extends UpdateCompanion<Student> {
     this.name = const Value.absent(),
     this.erpCode = const Value.absent(),
     this.email = const Value.absent(),
-    this.invoiceName = const Value.absent(),
-    this.nit = const Value.absent(),
     this.state = const Value.absent(),
     this.fatherId = const Value.absent(),
     this.gradeId = const Value.absent(),
     this.parallelId = const Value.absent(),
-    this.priceListId = const Value.absent(),
-    this.createdBy = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   });
@@ -3197,14 +3185,10 @@ class StudentsCompanion extends UpdateCompanion<Student> {
     this.name = const Value.absent(),
     this.erpCode = const Value.absent(),
     this.email = const Value.absent(),
-    this.invoiceName = const Value.absent(),
-    this.nit = const Value.absent(),
     this.state = const Value.absent(),
     this.fatherId = const Value.absent(),
     this.gradeId = const Value.absent(),
     this.parallelId = const Value.absent(),
-    this.priceListId = const Value.absent(),
-    this.createdBy = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.updatedAt = const Value.absent(),
   });
@@ -3213,14 +3197,10 @@ class StudentsCompanion extends UpdateCompanion<Student> {
     Expression<String>? name,
     Expression<String>? erpCode,
     Expression<String>? email,
-    Expression<String>? invoiceName,
-    Expression<String>? nit,
-    Expression<String>? state,
+    Expression<int>? state,
     Expression<int>? fatherId,
     Expression<int>? gradeId,
     Expression<int>? parallelId,
-    Expression<int>? priceListId,
-    Expression<int>? createdBy,
     Expression<String>? createdAt,
     Expression<String>? updatedAt,
   }) {
@@ -3229,14 +3209,10 @@ class StudentsCompanion extends UpdateCompanion<Student> {
       if (name != null) 'name': name,
       if (erpCode != null) 'erp_code': erpCode,
       if (email != null) 'email': email,
-      if (invoiceName != null) 'invoice_name': invoiceName,
-      if (nit != null) 'nit': nit,
       if (state != null) 'state': state,
       if (fatherId != null) 'father_id': fatherId,
       if (gradeId != null) 'grade_id': gradeId,
       if (parallelId != null) 'parallel_id': parallelId,
-      if (priceListId != null) 'price_list_id': priceListId,
-      if (createdBy != null) 'created_by': createdBy,
       if (createdAt != null) 'created_at': createdAt,
       if (updatedAt != null) 'updated_at': updatedAt,
     });
@@ -3247,14 +3223,10 @@ class StudentsCompanion extends UpdateCompanion<Student> {
       Value<String?>? name,
       Value<String?>? erpCode,
       Value<String?>? email,
-      Value<String?>? invoiceName,
-      Value<String?>? nit,
-      Value<String?>? state,
+      Value<int?>? state,
       Value<int?>? fatherId,
       Value<int?>? gradeId,
       Value<int?>? parallelId,
-      Value<int?>? priceListId,
-      Value<int?>? createdBy,
       Value<String?>? createdAt,
       Value<String?>? updatedAt}) {
     return StudentsCompanion(
@@ -3262,14 +3234,10 @@ class StudentsCompanion extends UpdateCompanion<Student> {
       name: name ?? this.name,
       erpCode: erpCode ?? this.erpCode,
       email: email ?? this.email,
-      invoiceName: invoiceName ?? this.invoiceName,
-      nit: nit ?? this.nit,
       state: state ?? this.state,
       fatherId: fatherId ?? this.fatherId,
       gradeId: gradeId ?? this.gradeId,
       parallelId: parallelId ?? this.parallelId,
-      priceListId: priceListId ?? this.priceListId,
-      createdBy: createdBy ?? this.createdBy,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -3290,14 +3258,8 @@ class StudentsCompanion extends UpdateCompanion<Student> {
     if (email.present) {
       map['email'] = Variable<String>(email.value);
     }
-    if (invoiceName.present) {
-      map['invoice_name'] = Variable<String>(invoiceName.value);
-    }
-    if (nit.present) {
-      map['nit'] = Variable<String>(nit.value);
-    }
     if (state.present) {
-      map['state'] = Variable<String>(state.value);
+      map['state'] = Variable<int>(state.value);
     }
     if (fatherId.present) {
       map['father_id'] = Variable<int>(fatherId.value);
@@ -3307,12 +3269,6 @@ class StudentsCompanion extends UpdateCompanion<Student> {
     }
     if (parallelId.present) {
       map['parallel_id'] = Variable<int>(parallelId.value);
-    }
-    if (priceListId.present) {
-      map['price_list_id'] = Variable<int>(priceListId.value);
-    }
-    if (createdBy.present) {
-      map['created_by'] = Variable<int>(createdBy.value);
     }
     if (createdAt.present) {
       map['created_at'] = Variable<String>(createdAt.value);
@@ -3330,14 +3286,10 @@ class StudentsCompanion extends UpdateCompanion<Student> {
           ..write('name: $name, ')
           ..write('erpCode: $erpCode, ')
           ..write('email: $email, ')
-          ..write('invoiceName: $invoiceName, ')
-          ..write('nit: $nit, ')
           ..write('state: $state, ')
           ..write('fatherId: $fatherId, ')
           ..write('gradeId: $gradeId, ')
           ..write('parallelId: $parallelId, ')
-          ..write('priceListId: $priceListId, ')
-          ..write('createdBy: $createdBy, ')
           ..write('createdAt: $createdAt, ')
           ..write('updatedAt: $updatedAt')
           ..write(')'))
@@ -3500,6 +3452,17 @@ class EquipmentPriceList extends DataClass
         equipmentId: equipmentId.present ? equipmentId.value : this.equipmentId,
         price: price.present ? price.value : this.price,
       );
+  EquipmentPriceList copyWithCompanion(EquipmentPriceListsCompanion data) {
+    return EquipmentPriceList(
+      id: data.id.present ? data.id.value : this.id,
+      priceListId:
+          data.priceListId.present ? data.priceListId.value : this.priceListId,
+      equipmentId:
+          data.equipmentId.present ? data.equipmentId.value : this.equipmentId,
+      price: data.price.present ? data.price.value : this.price,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('EquipmentPriceList(')
@@ -3865,6 +3828,23 @@ class AcademicManagement extends DataClass
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
+  AcademicManagement copyWithCompanion(AcademicManagementsCompanion data) {
+    return AcademicManagement(
+      id: data.id.present ? data.id.value : this.id,
+      year: data.year.present ? data.year.value : this.year,
+      registrationStartDate: data.registrationStartDate.present
+          ? data.registrationStartDate.value
+          : this.registrationStartDate,
+      registrationEndDate: data.registrationEndDate.present
+          ? data.registrationEndDate.value
+          : this.registrationEndDate,
+      state: data.state.present ? data.state.value : this.state,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('AcademicManagement(')
@@ -4320,6 +4300,27 @@ class EquipmentListDetail extends DataClass
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
+  EquipmentListDetail copyWithCompanion(EquipmentListDetailsCompanion data) {
+    return EquipmentListDetail(
+      id: data.id.present ? data.id.value : this.id,
+      singlePurchase: data.singlePurchase.present
+          ? data.singlePurchase.value
+          : this.singlePurchase,
+      minQuantity:
+          data.minQuantity.present ? data.minQuantity.value : this.minQuantity,
+      maxQuantity:
+          data.maxQuantity.present ? data.maxQuantity.value : this.maxQuantity,
+      equipmentListId: data.equipmentListId.present
+          ? data.equipmentListId.value
+          : this.equipmentListId,
+      equipmentId:
+          data.equipmentId.present ? data.equipmentId.value : this.equipmentId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('EquipmentListDetail(')
@@ -4706,6 +4707,19 @@ class Annotation extends DataClass implements Insertable<Annotation> {
         studentId: studentId.present ? studentId.value : this.studentId,
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
       );
+  Annotation copyWithCompanion(AnnotationsCompanion data) {
+    return Annotation(
+      id: data.id.present ? data.id.value : this.id,
+      date: data.date.present ? data.date.value : this.date,
+      type: data.type.present ? data.type.value : this.type,
+      subject: data.subject.present ? data.subject.value : this.subject,
+      description:
+          data.description.present ? data.description.value : this.description,
+      studentId: data.studentId.present ? data.studentId.value : this.studentId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Annotation(')
@@ -5121,6 +5135,22 @@ class Absence extends DataClass implements Insertable<Absence> {
         studentId: studentId.present ? studentId.value : this.studentId,
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
       );
+  Absence copyWithCompanion(AbsencesCompanion data) {
+    return Absence(
+      id: data.id.present ? data.id.value : this.id,
+      date: data.date.present ? data.date.value : this.date,
+      startTime: data.startTime.present ? data.startTime.value : this.startTime,
+      endTime: data.endTime.present ? data.endTime.value : this.endTime,
+      type: data.type.present ? data.type.value : this.type,
+      time: data.time.present ? data.time.value : this.time,
+      absenceGroup: data.absenceGroup.present
+          ? data.absenceGroup.value
+          : this.absenceGroup,
+      studentId: data.studentId.present ? data.studentId.value : this.studentId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Absence(')
@@ -5681,6 +5711,31 @@ class EquipmentRequest extends DataClass
         createdAt: createdAt ?? this.createdAt,
         updatedAt: updatedAt ?? this.updatedAt,
       );
+  EquipmentRequest copyWithCompanion(EquipmentRequestsCompanion data) {
+    return EquipmentRequest(
+      id: data.id.present ? data.id.value : this.id,
+      erpCode: data.erpCode.present ? data.erpCode.value : this.erpCode,
+      state: data.state.present ? data.state.value : this.state,
+      date: data.date.present ? data.date.value : this.date,
+      token: data.token.present ? data.token.value : this.token,
+      total: data.total.present ? data.total.value : this.total,
+      priceListId:
+          data.priceListId.present ? data.priceListId.value : this.priceListId,
+      equipmentListId: data.equipmentListId.present
+          ? data.equipmentListId.value
+          : this.equipmentListId,
+      studentId: data.studentId.present ? data.studentId.value : this.studentId,
+      employeeId:
+          data.employeeId.present ? data.employeeId.value : this.employeeId,
+      academicManagementId: data.academicManagementId.present
+          ? data.academicManagementId.value
+          : this.academicManagementId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('EquipmentRequest(')
@@ -6210,6 +6265,24 @@ class EquipmentRequestDetail extends DataClass
         createdAt: createdAt.present ? createdAt.value : this.createdAt,
         updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
       );
+  EquipmentRequestDetail copyWithCompanion(
+      EquipmentRequestDetailsCompanion data) {
+    return EquipmentRequestDetail(
+      id: data.id.present ? data.id.value : this.id,
+      quantity: data.quantity.present ? data.quantity.value : this.quantity,
+      price: data.price.present ? data.price.value : this.price,
+      subTotal: data.subTotal.present ? data.subTotal.value : this.subTotal,
+      equipmentId:
+          data.equipmentId.present ? data.equipmentId.value : this.equipmentId,
+      equipmentRequestId: data.equipmentRequestId.present
+          ? data.equipmentRequestId.value
+          : this.equipmentRequestId,
+      createdBy: data.createdBy.present ? data.createdBy.value : this.createdBy,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('EquipmentRequestDetail(')
@@ -6852,6 +6925,39 @@ class LicenseRequest extends DataClass implements Insertable<LicenseRequest> {
         academicManagementId: academicManagementId ?? this.academicManagementId,
         subjectId: subjectId ?? this.subjectId,
       );
+  LicenseRequest copyWithCompanion(LicenseRequestsCompanion data) {
+    return LicenseRequest(
+      id: data.id.present ? data.id.value : this.id,
+      studentCode:
+          data.studentCode.present ? data.studentCode.value : this.studentCode,
+      date: data.date.present ? data.date.value : this.date,
+      startDate: data.startDate.present ? data.startDate.value : this.startDate,
+      endDate: data.endDate.present ? data.endDate.value : this.endDate,
+      status: data.status.present ? data.status.value : this.status,
+      test: data.test.present ? data.test.value : this.test,
+      reason: data.reason.present ? data.reason.value : this.reason,
+      requesterName: data.requesterName.present
+          ? data.requesterName.value
+          : this.requesterName,
+      requesterPhone: data.requesterPhone.present
+          ? data.requesterPhone.value
+          : this.requesterPhone,
+      requesterEmail: data.requesterEmail.present
+          ? data.requesterEmail.value
+          : this.requesterEmail,
+      attachment:
+          data.attachment.present ? data.attachment.value : this.attachment,
+      studentId: data.studentId.present ? data.studentId.value : this.studentId,
+      gradeId: data.gradeId.present ? data.gradeId.value : this.gradeId,
+      parallelId:
+          data.parallelId.present ? data.parallelId.value : this.parallelId,
+      academicManagementId: data.academicManagementId.present
+          ? data.academicManagementId.value
+          : this.academicManagementId,
+      subjectId: data.subjectId.present ? data.subjectId.value : this.subjectId,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('LicenseRequest(')
@@ -7248,6 +7354,13 @@ class Subject extends DataClass implements Insertable<Subject> {
         id: id ?? this.id,
         name: name.present ? name.value : this.name,
       );
+  Subject copyWithCompanion(SubjectsCompanion data) {
+    return Subject(
+      id: data.id.present ? data.id.value : this.id,
+      name: data.name.present ? data.name.value : this.name,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('Subject(')
@@ -7437,6 +7550,14 @@ class GradeSubject extends DataClass implements Insertable<GradeSubject> {
         gradeId: gradeId ?? this.gradeId,
         subjectId: subjectId ?? this.subjectId,
       );
+  GradeSubject copyWithCompanion(GradesSubjectsCompanion data) {
+    return GradeSubject(
+      id: data.id.present ? data.id.value : this.id,
+      gradeId: data.gradeId.present ? data.gradeId.value : this.gradeId,
+      subjectId: data.subjectId.present ? data.subjectId.value : this.subjectId,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('GradeSubject(')
@@ -7522,6 +7643,7 @@ class GradesSubjectsCompanion extends UpdateCompanion<GradeSubject> {
 
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
+  $AppDatabaseManager get managers => $AppDatabaseManager(this);
   late final $TypesTable types = $TypesTable(this);
   late final $NewsTable news = $NewsTable(this);
   late final $NewsImagesTable newsImages = $NewsImagesTable(this);
@@ -7631,7 +7753,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
         }).map((QueryRow row) => StudentHistoricalEquipmentRequestResult(
           id: row.read<int>('id'),
           name: row.readNullable<String>('name'),
-          quantity: row.read<double>('quantity'),
+          quantity: row.readNullable<double>('quantity'),
           price: row.read<double>('price'),
           subTotal: row.read<double>('sub_total'),
           min: row.readNullable<double>('min'),
@@ -7687,6 +7809,4010 @@ abstract class _$AppDatabase extends GeneratedDatabase {
       ];
 }
 
+typedef $$TypesTableCreateCompanionBuilder = TypesCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+typedef $$TypesTableUpdateCompanionBuilder = TypesCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+
+class $$TypesTableFilterComposer extends Composer<_$AppDatabase, $TypesTable> {
+  $$TypesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$TypesTableOrderingComposer
+    extends Composer<_$AppDatabase, $TypesTable> {
+  $$TypesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$TypesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $TypesTable> {
+  $$TypesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<int> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$TypesTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $TypesTable,
+    Type,
+    $$TypesTableFilterComposer,
+    $$TypesTableOrderingComposer,
+    $$TypesTableAnnotationComposer,
+    $$TypesTableCreateCompanionBuilder,
+    $$TypesTableUpdateCompanionBuilder,
+    (Type, BaseReferences<_$AppDatabase, $TypesTable, Type>),
+    Type,
+    PrefetchHooks Function()> {
+  $$TypesTableTableManager(_$AppDatabase db, $TypesTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$TypesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$TypesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$TypesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              TypesCompanion(
+            id: id,
+            name: name,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              TypesCompanion.insert(
+            id: id,
+            name: name,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$TypesTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $TypesTable,
+    Type,
+    $$TypesTableFilterComposer,
+    $$TypesTableOrderingComposer,
+    $$TypesTableAnnotationComposer,
+    $$TypesTableCreateCompanionBuilder,
+    $$TypesTableUpdateCompanionBuilder,
+    (Type, BaseReferences<_$AppDatabase, $TypesTable, Type>),
+    Type,
+    PrefetchHooks Function()>;
+typedef $$NewsTableCreateCompanionBuilder = NewsCompanion Function({
+  Value<int> id,
+  Value<String?> title,
+  Value<String?> description,
+  Value<String?> path,
+  Value<bool?> notifiable,
+  Value<String?> state,
+  Value<int?> newsTypeId,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+typedef $$NewsTableUpdateCompanionBuilder = NewsCompanion Function({
+  Value<int> id,
+  Value<String?> title,
+  Value<String?> description,
+  Value<String?> path,
+  Value<bool?> notifiable,
+  Value<String?> state,
+  Value<int?> newsTypeId,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+
+class $$NewsTableFilterComposer extends Composer<_$AppDatabase, $NewsTable> {
+  $$NewsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get path => $composableBuilder(
+      column: $table.path, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get notifiable => $composableBuilder(
+      column: $table.notifiable, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get newsTypeId => $composableBuilder(
+      column: $table.newsTypeId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$NewsTableOrderingComposer extends Composer<_$AppDatabase, $NewsTable> {
+  $$NewsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get path => $composableBuilder(
+      column: $table.path, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get notifiable => $composableBuilder(
+      column: $table.notifiable, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get newsTypeId => $composableBuilder(
+      column: $table.newsTypeId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$NewsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $NewsTable> {
+  $$NewsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => column);
+
+  GeneratedColumn<String> get path =>
+      $composableBuilder(column: $table.path, builder: (column) => column);
+
+  GeneratedColumn<bool> get notifiable => $composableBuilder(
+      column: $table.notifiable, builder: (column) => column);
+
+  GeneratedColumn<String> get state =>
+      $composableBuilder(column: $table.state, builder: (column) => column);
+
+  GeneratedColumn<int> get newsTypeId => $composableBuilder(
+      column: $table.newsTypeId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$NewsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $NewsTable,
+    New,
+    $$NewsTableFilterComposer,
+    $$NewsTableOrderingComposer,
+    $$NewsTableAnnotationComposer,
+    $$NewsTableCreateCompanionBuilder,
+    $$NewsTableUpdateCompanionBuilder,
+    (New, BaseReferences<_$AppDatabase, $NewsTable, New>),
+    New,
+    PrefetchHooks Function()> {
+  $$NewsTableTableManager(_$AppDatabase db, $NewsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$NewsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$NewsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$NewsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> title = const Value.absent(),
+            Value<String?> description = const Value.absent(),
+            Value<String?> path = const Value.absent(),
+            Value<bool?> notifiable = const Value.absent(),
+            Value<String?> state = const Value.absent(),
+            Value<int?> newsTypeId = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              NewsCompanion(
+            id: id,
+            title: title,
+            description: description,
+            path: path,
+            notifiable: notifiable,
+            state: state,
+            newsTypeId: newsTypeId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> title = const Value.absent(),
+            Value<String?> description = const Value.absent(),
+            Value<String?> path = const Value.absent(),
+            Value<bool?> notifiable = const Value.absent(),
+            Value<String?> state = const Value.absent(),
+            Value<int?> newsTypeId = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              NewsCompanion.insert(
+            id: id,
+            title: title,
+            description: description,
+            path: path,
+            notifiable: notifiable,
+            state: state,
+            newsTypeId: newsTypeId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$NewsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $NewsTable,
+    New,
+    $$NewsTableFilterComposer,
+    $$NewsTableOrderingComposer,
+    $$NewsTableAnnotationComposer,
+    $$NewsTableCreateCompanionBuilder,
+    $$NewsTableUpdateCompanionBuilder,
+    (New, BaseReferences<_$AppDatabase, $NewsTable, New>),
+    New,
+    PrefetchHooks Function()>;
+typedef $$NewsImagesTableCreateCompanionBuilder = NewsImagesCompanion Function({
+  Value<int> id,
+  Value<String?> path,
+  required int newId,
+});
+typedef $$NewsImagesTableUpdateCompanionBuilder = NewsImagesCompanion Function({
+  Value<int> id,
+  Value<String?> path,
+  Value<int> newId,
+});
+
+class $$NewsImagesTableFilterComposer
+    extends Composer<_$AppDatabase, $NewsImagesTable> {
+  $$NewsImagesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get path => $composableBuilder(
+      column: $table.path, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get newId => $composableBuilder(
+      column: $table.newId, builder: (column) => ColumnFilters(column));
+}
+
+class $$NewsImagesTableOrderingComposer
+    extends Composer<_$AppDatabase, $NewsImagesTable> {
+  $$NewsImagesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get path => $composableBuilder(
+      column: $table.path, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get newId => $composableBuilder(
+      column: $table.newId, builder: (column) => ColumnOrderings(column));
+}
+
+class $$NewsImagesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $NewsImagesTable> {
+  $$NewsImagesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get path =>
+      $composableBuilder(column: $table.path, builder: (column) => column);
+
+  GeneratedColumn<int> get newId =>
+      $composableBuilder(column: $table.newId, builder: (column) => column);
+}
+
+class $$NewsImagesTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $NewsImagesTable,
+    NewImage,
+    $$NewsImagesTableFilterComposer,
+    $$NewsImagesTableOrderingComposer,
+    $$NewsImagesTableAnnotationComposer,
+    $$NewsImagesTableCreateCompanionBuilder,
+    $$NewsImagesTableUpdateCompanionBuilder,
+    (NewImage, BaseReferences<_$AppDatabase, $NewsImagesTable, NewImage>),
+    NewImage,
+    PrefetchHooks Function()> {
+  $$NewsImagesTableTableManager(_$AppDatabase db, $NewsImagesTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$NewsImagesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$NewsImagesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$NewsImagesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> path = const Value.absent(),
+            Value<int> newId = const Value.absent(),
+          }) =>
+              NewsImagesCompanion(
+            id: id,
+            path: path,
+            newId: newId,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> path = const Value.absent(),
+            required int newId,
+          }) =>
+              NewsImagesCompanion.insert(
+            id: id,
+            path: path,
+            newId: newId,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$NewsImagesTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $NewsImagesTable,
+    NewImage,
+    $$NewsImagesTableFilterComposer,
+    $$NewsImagesTableOrderingComposer,
+    $$NewsImagesTableAnnotationComposer,
+    $$NewsImagesTableCreateCompanionBuilder,
+    $$NewsImagesTableUpdateCompanionBuilder,
+    (NewImage, BaseReferences<_$AppDatabase, $NewsImagesTable, NewImage>),
+    NewImage,
+    PrefetchHooks Function()>;
+typedef $$NotificationsTableCreateCompanionBuilder = NotificationsCompanion
+    Function({
+  Value<int> id,
+  Value<int?> code,
+  Value<String?> title,
+  Value<String?> message,
+  Value<String?> url,
+});
+typedef $$NotificationsTableUpdateCompanionBuilder = NotificationsCompanion
+    Function({
+  Value<int> id,
+  Value<int?> code,
+  Value<String?> title,
+  Value<String?> message,
+  Value<String?> url,
+});
+
+class $$NotificationsTableFilterComposer
+    extends Composer<_$AppDatabase, $NotificationsTable> {
+  $$NotificationsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get code => $composableBuilder(
+      column: $table.code, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get message => $composableBuilder(
+      column: $table.message, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get url => $composableBuilder(
+      column: $table.url, builder: (column) => ColumnFilters(column));
+}
+
+class $$NotificationsTableOrderingComposer
+    extends Composer<_$AppDatabase, $NotificationsTable> {
+  $$NotificationsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get code => $composableBuilder(
+      column: $table.code, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get title => $composableBuilder(
+      column: $table.title, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get message => $composableBuilder(
+      column: $table.message, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get url => $composableBuilder(
+      column: $table.url, builder: (column) => ColumnOrderings(column));
+}
+
+class $$NotificationsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $NotificationsTable> {
+  $$NotificationsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get code =>
+      $composableBuilder(column: $table.code, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<String> get message =>
+      $composableBuilder(column: $table.message, builder: (column) => column);
+
+  GeneratedColumn<String> get url =>
+      $composableBuilder(column: $table.url, builder: (column) => column);
+}
+
+class $$NotificationsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $NotificationsTable,
+    Notification,
+    $$NotificationsTableFilterComposer,
+    $$NotificationsTableOrderingComposer,
+    $$NotificationsTableAnnotationComposer,
+    $$NotificationsTableCreateCompanionBuilder,
+    $$NotificationsTableUpdateCompanionBuilder,
+    (
+      Notification,
+      BaseReferences<_$AppDatabase, $NotificationsTable, Notification>
+    ),
+    Notification,
+    PrefetchHooks Function()> {
+  $$NotificationsTableTableManager(_$AppDatabase db, $NotificationsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$NotificationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$NotificationsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$NotificationsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int?> code = const Value.absent(),
+            Value<String?> title = const Value.absent(),
+            Value<String?> message = const Value.absent(),
+            Value<String?> url = const Value.absent(),
+          }) =>
+              NotificationsCompanion(
+            id: id,
+            code: code,
+            title: title,
+            message: message,
+            url: url,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int?> code = const Value.absent(),
+            Value<String?> title = const Value.absent(),
+            Value<String?> message = const Value.absent(),
+            Value<String?> url = const Value.absent(),
+          }) =>
+              NotificationsCompanion.insert(
+            id: id,
+            code: code,
+            title: title,
+            message: message,
+            url: url,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$NotificationsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $NotificationsTable,
+    Notification,
+    $$NotificationsTableFilterComposer,
+    $$NotificationsTableOrderingComposer,
+    $$NotificationsTableAnnotationComposer,
+    $$NotificationsTableCreateCompanionBuilder,
+    $$NotificationsTableUpdateCompanionBuilder,
+    (
+      Notification,
+      BaseReferences<_$AppDatabase, $NotificationsTable, Notification>
+    ),
+    Notification,
+    PrefetchHooks Function()>;
+typedef $$UsersTableCreateCompanionBuilder = UsersCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<String?> entityType,
+  Value<int?> entityId,
+  Value<String?> userType,
+  Value<String?> apiToken,
+});
+typedef $$UsersTableUpdateCompanionBuilder = UsersCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<String?> entityType,
+  Value<int?> entityId,
+  Value<String?> userType,
+  Value<String?> apiToken,
+});
+
+class $$UsersTableFilterComposer extends Composer<_$AppDatabase, $UsersTable> {
+  $$UsersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get entityType => $composableBuilder(
+      column: $table.entityType, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get entityId => $composableBuilder(
+      column: $table.entityId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get userType => $composableBuilder(
+      column: $table.userType, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get apiToken => $composableBuilder(
+      column: $table.apiToken, builder: (column) => ColumnFilters(column));
+}
+
+class $$UsersTableOrderingComposer
+    extends Composer<_$AppDatabase, $UsersTable> {
+  $$UsersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get entityType => $composableBuilder(
+      column: $table.entityType, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get entityId => $composableBuilder(
+      column: $table.entityId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get userType => $composableBuilder(
+      column: $table.userType, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get apiToken => $composableBuilder(
+      column: $table.apiToken, builder: (column) => ColumnOrderings(column));
+}
+
+class $$UsersTableAnnotationComposer
+    extends Composer<_$AppDatabase, $UsersTable> {
+  $$UsersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get entityType => $composableBuilder(
+      column: $table.entityType, builder: (column) => column);
+
+  GeneratedColumn<int> get entityId =>
+      $composableBuilder(column: $table.entityId, builder: (column) => column);
+
+  GeneratedColumn<String> get userType =>
+      $composableBuilder(column: $table.userType, builder: (column) => column);
+
+  GeneratedColumn<String> get apiToken =>
+      $composableBuilder(column: $table.apiToken, builder: (column) => column);
+}
+
+class $$UsersTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $UsersTable,
+    User,
+    $$UsersTableFilterComposer,
+    $$UsersTableOrderingComposer,
+    $$UsersTableAnnotationComposer,
+    $$UsersTableCreateCompanionBuilder,
+    $$UsersTableUpdateCompanionBuilder,
+    (User, BaseReferences<_$AppDatabase, $UsersTable, User>),
+    User,
+    PrefetchHooks Function()> {
+  $$UsersTableTableManager(_$AppDatabase db, $UsersTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$UsersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$UsersTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$UsersTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> entityType = const Value.absent(),
+            Value<int?> entityId = const Value.absent(),
+            Value<String?> userType = const Value.absent(),
+            Value<String?> apiToken = const Value.absent(),
+          }) =>
+              UsersCompanion(
+            id: id,
+            name: name,
+            entityType: entityType,
+            entityId: entityId,
+            userType: userType,
+            apiToken: apiToken,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> entityType = const Value.absent(),
+            Value<int?> entityId = const Value.absent(),
+            Value<String?> userType = const Value.absent(),
+            Value<String?> apiToken = const Value.absent(),
+          }) =>
+              UsersCompanion.insert(
+            id: id,
+            name: name,
+            entityType: entityType,
+            entityId: entityId,
+            userType: userType,
+            apiToken: apiToken,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$UsersTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $UsersTable,
+    User,
+    $$UsersTableFilterComposer,
+    $$UsersTableOrderingComposer,
+    $$UsersTableAnnotationComposer,
+    $$UsersTableCreateCompanionBuilder,
+    $$UsersTableUpdateCompanionBuilder,
+    (User, BaseReferences<_$AppDatabase, $UsersTable, User>),
+    User,
+    PrefetchHooks Function()>;
+typedef $$GradesTableCreateCompanionBuilder = GradesCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+});
+typedef $$GradesTableUpdateCompanionBuilder = GradesCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+});
+
+class $$GradesTableFilterComposer
+    extends Composer<_$AppDatabase, $GradesTable> {
+  $$GradesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+}
+
+class $$GradesTableOrderingComposer
+    extends Composer<_$AppDatabase, $GradesTable> {
+  $$GradesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+}
+
+class $$GradesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $GradesTable> {
+  $$GradesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+}
+
+class $$GradesTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $GradesTable,
+    Grade,
+    $$GradesTableFilterComposer,
+    $$GradesTableOrderingComposer,
+    $$GradesTableAnnotationComposer,
+    $$GradesTableCreateCompanionBuilder,
+    $$GradesTableUpdateCompanionBuilder,
+    (Grade, BaseReferences<_$AppDatabase, $GradesTable, Grade>),
+    Grade,
+    PrefetchHooks Function()> {
+  $$GradesTableTableManager(_$AppDatabase db, $GradesTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$GradesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$GradesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$GradesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+          }) =>
+              GradesCompanion(
+            id: id,
+            name: name,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+          }) =>
+              GradesCompanion.insert(
+            id: id,
+            name: name,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$GradesTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $GradesTable,
+    Grade,
+    $$GradesTableFilterComposer,
+    $$GradesTableOrderingComposer,
+    $$GradesTableAnnotationComposer,
+    $$GradesTableCreateCompanionBuilder,
+    $$GradesTableUpdateCompanionBuilder,
+    (Grade, BaseReferences<_$AppDatabase, $GradesTable, Grade>),
+    Grade,
+    PrefetchHooks Function()>;
+typedef $$ParallelsTableCreateCompanionBuilder = ParallelsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+});
+typedef $$ParallelsTableUpdateCompanionBuilder = ParallelsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+});
+
+class $$ParallelsTableFilterComposer
+    extends Composer<_$AppDatabase, $ParallelsTable> {
+  $$ParallelsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+}
+
+class $$ParallelsTableOrderingComposer
+    extends Composer<_$AppDatabase, $ParallelsTable> {
+  $$ParallelsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+}
+
+class $$ParallelsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ParallelsTable> {
+  $$ParallelsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+}
+
+class $$ParallelsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $ParallelsTable,
+    Parallel,
+    $$ParallelsTableFilterComposer,
+    $$ParallelsTableOrderingComposer,
+    $$ParallelsTableAnnotationComposer,
+    $$ParallelsTableCreateCompanionBuilder,
+    $$ParallelsTableUpdateCompanionBuilder,
+    (Parallel, BaseReferences<_$AppDatabase, $ParallelsTable, Parallel>),
+    Parallel,
+    PrefetchHooks Function()> {
+  $$ParallelsTableTableManager(_$AppDatabase db, $ParallelsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ParallelsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ParallelsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ParallelsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+          }) =>
+              ParallelsCompanion(
+            id: id,
+            name: name,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+          }) =>
+              ParallelsCompanion.insert(
+            id: id,
+            name: name,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$ParallelsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $ParallelsTable,
+    Parallel,
+    $$ParallelsTableFilterComposer,
+    $$ParallelsTableOrderingComposer,
+    $$ParallelsTableAnnotationComposer,
+    $$ParallelsTableCreateCompanionBuilder,
+    $$ParallelsTableUpdateCompanionBuilder,
+    (Parallel, BaseReferences<_$AppDatabase, $ParallelsTable, Parallel>),
+    Parallel,
+    PrefetchHooks Function()>;
+typedef $$EquipmentsTableCreateCompanionBuilder = EquipmentsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<String?> shortName,
+});
+typedef $$EquipmentsTableUpdateCompanionBuilder = EquipmentsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<String?> shortName,
+});
+
+class $$EquipmentsTableFilterComposer
+    extends Composer<_$AppDatabase, $EquipmentsTable> {
+  $$EquipmentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get shortName => $composableBuilder(
+      column: $table.shortName, builder: (column) => ColumnFilters(column));
+}
+
+class $$EquipmentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $EquipmentsTable> {
+  $$EquipmentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get shortName => $composableBuilder(
+      column: $table.shortName, builder: (column) => ColumnOrderings(column));
+}
+
+class $$EquipmentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EquipmentsTable> {
+  $$EquipmentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get shortName =>
+      $composableBuilder(column: $table.shortName, builder: (column) => column);
+}
+
+class $$EquipmentsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $EquipmentsTable,
+    Equipment,
+    $$EquipmentsTableFilterComposer,
+    $$EquipmentsTableOrderingComposer,
+    $$EquipmentsTableAnnotationComposer,
+    $$EquipmentsTableCreateCompanionBuilder,
+    $$EquipmentsTableUpdateCompanionBuilder,
+    (Equipment, BaseReferences<_$AppDatabase, $EquipmentsTable, Equipment>),
+    Equipment,
+    PrefetchHooks Function()> {
+  $$EquipmentsTableTableManager(_$AppDatabase db, $EquipmentsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EquipmentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EquipmentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EquipmentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> shortName = const Value.absent(),
+          }) =>
+              EquipmentsCompanion(
+            id: id,
+            name: name,
+            shortName: shortName,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> shortName = const Value.absent(),
+          }) =>
+              EquipmentsCompanion.insert(
+            id: id,
+            name: name,
+            shortName: shortName,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EquipmentsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $EquipmentsTable,
+    Equipment,
+    $$EquipmentsTableFilterComposer,
+    $$EquipmentsTableOrderingComposer,
+    $$EquipmentsTableAnnotationComposer,
+    $$EquipmentsTableCreateCompanionBuilder,
+    $$EquipmentsTableUpdateCompanionBuilder,
+    (Equipment, BaseReferences<_$AppDatabase, $EquipmentsTable, Equipment>),
+    Equipment,
+    PrefetchHooks Function()>;
+typedef $$PriceListsTableCreateCompanionBuilder = PriceListsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+});
+typedef $$PriceListsTableUpdateCompanionBuilder = PriceListsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+});
+
+class $$PriceListsTableFilterComposer
+    extends Composer<_$AppDatabase, $PriceListsTable> {
+  $$PriceListsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+}
+
+class $$PriceListsTableOrderingComposer
+    extends Composer<_$AppDatabase, $PriceListsTable> {
+  $$PriceListsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+}
+
+class $$PriceListsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PriceListsTable> {
+  $$PriceListsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+}
+
+class $$PriceListsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $PriceListsTable,
+    PriceList,
+    $$PriceListsTableFilterComposer,
+    $$PriceListsTableOrderingComposer,
+    $$PriceListsTableAnnotationComposer,
+    $$PriceListsTableCreateCompanionBuilder,
+    $$PriceListsTableUpdateCompanionBuilder,
+    (PriceList, BaseReferences<_$AppDatabase, $PriceListsTable, PriceList>),
+    PriceList,
+    PrefetchHooks Function()> {
+  $$PriceListsTableTableManager(_$AppDatabase db, $PriceListsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PriceListsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PriceListsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PriceListsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+          }) =>
+              PriceListsCompanion(
+            id: id,
+            name: name,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+          }) =>
+              PriceListsCompanion.insert(
+            id: id,
+            name: name,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$PriceListsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $PriceListsTable,
+    PriceList,
+    $$PriceListsTableFilterComposer,
+    $$PriceListsTableOrderingComposer,
+    $$PriceListsTableAnnotationComposer,
+    $$PriceListsTableCreateCompanionBuilder,
+    $$PriceListsTableUpdateCompanionBuilder,
+    (PriceList, BaseReferences<_$AppDatabase, $PriceListsTable, PriceList>),
+    PriceList,
+    PrefetchHooks Function()>;
+typedef $$EquipmentListsTableCreateCompanionBuilder = EquipmentListsCompanion
+    Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<String?> state,
+  Value<int?> academicManagementId,
+  Value<int?> gradeId,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+typedef $$EquipmentListsTableUpdateCompanionBuilder = EquipmentListsCompanion
+    Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<String?> state,
+  Value<int?> academicManagementId,
+  Value<int?> gradeId,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+
+class $$EquipmentListsTableFilterComposer
+    extends Composer<_$AppDatabase, $EquipmentListsTable> {
+  $$EquipmentListsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get gradeId => $composableBuilder(
+      column: $table.gradeId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$EquipmentListsTableOrderingComposer
+    extends Composer<_$AppDatabase, $EquipmentListsTable> {
+  $$EquipmentListsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get gradeId => $composableBuilder(
+      column: $table.gradeId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$EquipmentListsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EquipmentListsTable> {
+  $$EquipmentListsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get state =>
+      $composableBuilder(column: $table.state, builder: (column) => column);
+
+  GeneratedColumn<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId, builder: (column) => column);
+
+  GeneratedColumn<int> get gradeId =>
+      $composableBuilder(column: $table.gradeId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$EquipmentListsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $EquipmentListsTable,
+    EquipmentList,
+    $$EquipmentListsTableFilterComposer,
+    $$EquipmentListsTableOrderingComposer,
+    $$EquipmentListsTableAnnotationComposer,
+    $$EquipmentListsTableCreateCompanionBuilder,
+    $$EquipmentListsTableUpdateCompanionBuilder,
+    (
+      EquipmentList,
+      BaseReferences<_$AppDatabase, $EquipmentListsTable, EquipmentList>
+    ),
+    EquipmentList,
+    PrefetchHooks Function()> {
+  $$EquipmentListsTableTableManager(
+      _$AppDatabase db, $EquipmentListsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EquipmentListsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EquipmentListsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EquipmentListsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> state = const Value.absent(),
+            Value<int?> academicManagementId = const Value.absent(),
+            Value<int?> gradeId = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              EquipmentListsCompanion(
+            id: id,
+            name: name,
+            state: state,
+            academicManagementId: academicManagementId,
+            gradeId: gradeId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> state = const Value.absent(),
+            Value<int?> academicManagementId = const Value.absent(),
+            Value<int?> gradeId = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              EquipmentListsCompanion.insert(
+            id: id,
+            name: name,
+            state: state,
+            academicManagementId: academicManagementId,
+            gradeId: gradeId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EquipmentListsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $EquipmentListsTable,
+    EquipmentList,
+    $$EquipmentListsTableFilterComposer,
+    $$EquipmentListsTableOrderingComposer,
+    $$EquipmentListsTableAnnotationComposer,
+    $$EquipmentListsTableCreateCompanionBuilder,
+    $$EquipmentListsTableUpdateCompanionBuilder,
+    (
+      EquipmentList,
+      BaseReferences<_$AppDatabase, $EquipmentListsTable, EquipmentList>
+    ),
+    EquipmentList,
+    PrefetchHooks Function()>;
+typedef $$StudentsTableCreateCompanionBuilder = StudentsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<String?> erpCode,
+  Value<String?> email,
+  Value<int?> state,
+  Value<int?> fatherId,
+  Value<int?> gradeId,
+  Value<int?> parallelId,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+typedef $$StudentsTableUpdateCompanionBuilder = StudentsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+  Value<String?> erpCode,
+  Value<String?> email,
+  Value<int?> state,
+  Value<int?> fatherId,
+  Value<int?> gradeId,
+  Value<int?> parallelId,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+
+class $$StudentsTableFilterComposer
+    extends Composer<_$AppDatabase, $StudentsTable> {
+  $$StudentsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get erpCode => $composableBuilder(
+      column: $table.erpCode, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get email => $composableBuilder(
+      column: $table.email, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get fatherId => $composableBuilder(
+      column: $table.fatherId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get gradeId => $composableBuilder(
+      column: $table.gradeId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get parallelId => $composableBuilder(
+      column: $table.parallelId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$StudentsTableOrderingComposer
+    extends Composer<_$AppDatabase, $StudentsTable> {
+  $$StudentsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get erpCode => $composableBuilder(
+      column: $table.erpCode, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get email => $composableBuilder(
+      column: $table.email, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get fatherId => $composableBuilder(
+      column: $table.fatherId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get gradeId => $composableBuilder(
+      column: $table.gradeId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get parallelId => $composableBuilder(
+      column: $table.parallelId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$StudentsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $StudentsTable> {
+  $$StudentsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+
+  GeneratedColumn<String> get erpCode =>
+      $composableBuilder(column: $table.erpCode, builder: (column) => column);
+
+  GeneratedColumn<String> get email =>
+      $composableBuilder(column: $table.email, builder: (column) => column);
+
+  GeneratedColumn<int> get state =>
+      $composableBuilder(column: $table.state, builder: (column) => column);
+
+  GeneratedColumn<int> get fatherId =>
+      $composableBuilder(column: $table.fatherId, builder: (column) => column);
+
+  GeneratedColumn<int> get gradeId =>
+      $composableBuilder(column: $table.gradeId, builder: (column) => column);
+
+  GeneratedColumn<int> get parallelId => $composableBuilder(
+      column: $table.parallelId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$StudentsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $StudentsTable,
+    Student,
+    $$StudentsTableFilterComposer,
+    $$StudentsTableOrderingComposer,
+    $$StudentsTableAnnotationComposer,
+    $$StudentsTableCreateCompanionBuilder,
+    $$StudentsTableUpdateCompanionBuilder,
+    (Student, BaseReferences<_$AppDatabase, $StudentsTable, Student>),
+    Student,
+    PrefetchHooks Function()> {
+  $$StudentsTableTableManager(_$AppDatabase db, $StudentsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$StudentsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$StudentsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$StudentsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> erpCode = const Value.absent(),
+            Value<String?> email = const Value.absent(),
+            Value<int?> state = const Value.absent(),
+            Value<int?> fatherId = const Value.absent(),
+            Value<int?> gradeId = const Value.absent(),
+            Value<int?> parallelId = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              StudentsCompanion(
+            id: id,
+            name: name,
+            erpCode: erpCode,
+            email: email,
+            state: state,
+            fatherId: fatherId,
+            gradeId: gradeId,
+            parallelId: parallelId,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> erpCode = const Value.absent(),
+            Value<String?> email = const Value.absent(),
+            Value<int?> state = const Value.absent(),
+            Value<int?> fatherId = const Value.absent(),
+            Value<int?> gradeId = const Value.absent(),
+            Value<int?> parallelId = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              StudentsCompanion.insert(
+            id: id,
+            name: name,
+            erpCode: erpCode,
+            email: email,
+            state: state,
+            fatherId: fatherId,
+            gradeId: gradeId,
+            parallelId: parallelId,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$StudentsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $StudentsTable,
+    Student,
+    $$StudentsTableFilterComposer,
+    $$StudentsTableOrderingComposer,
+    $$StudentsTableAnnotationComposer,
+    $$StudentsTableCreateCompanionBuilder,
+    $$StudentsTableUpdateCompanionBuilder,
+    (Student, BaseReferences<_$AppDatabase, $StudentsTable, Student>),
+    Student,
+    PrefetchHooks Function()>;
+typedef $$EquipmentPriceListsTableCreateCompanionBuilder
+    = EquipmentPriceListsCompanion Function({
+  Value<int> id,
+  Value<int?> priceListId,
+  Value<int?> equipmentId,
+  Value<double?> price,
+});
+typedef $$EquipmentPriceListsTableUpdateCompanionBuilder
+    = EquipmentPriceListsCompanion Function({
+  Value<int> id,
+  Value<int?> priceListId,
+  Value<int?> equipmentId,
+  Value<double?> price,
+});
+
+class $$EquipmentPriceListsTableFilterComposer
+    extends Composer<_$AppDatabase, $EquipmentPriceListsTable> {
+  $$EquipmentPriceListsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get priceListId => $composableBuilder(
+      column: $table.priceListId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get price => $composableBuilder(
+      column: $table.price, builder: (column) => ColumnFilters(column));
+}
+
+class $$EquipmentPriceListsTableOrderingComposer
+    extends Composer<_$AppDatabase, $EquipmentPriceListsTable> {
+  $$EquipmentPriceListsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get priceListId => $composableBuilder(
+      column: $table.priceListId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get price => $composableBuilder(
+      column: $table.price, builder: (column) => ColumnOrderings(column));
+}
+
+class $$EquipmentPriceListsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EquipmentPriceListsTable> {
+  $$EquipmentPriceListsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get priceListId => $composableBuilder(
+      column: $table.priceListId, builder: (column) => column);
+
+  GeneratedColumn<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => column);
+
+  GeneratedColumn<double> get price =>
+      $composableBuilder(column: $table.price, builder: (column) => column);
+}
+
+class $$EquipmentPriceListsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $EquipmentPriceListsTable,
+    EquipmentPriceList,
+    $$EquipmentPriceListsTableFilterComposer,
+    $$EquipmentPriceListsTableOrderingComposer,
+    $$EquipmentPriceListsTableAnnotationComposer,
+    $$EquipmentPriceListsTableCreateCompanionBuilder,
+    $$EquipmentPriceListsTableUpdateCompanionBuilder,
+    (
+      EquipmentPriceList,
+      BaseReferences<_$AppDatabase, $EquipmentPriceListsTable,
+          EquipmentPriceList>
+    ),
+    EquipmentPriceList,
+    PrefetchHooks Function()> {
+  $$EquipmentPriceListsTableTableManager(
+      _$AppDatabase db, $EquipmentPriceListsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EquipmentPriceListsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EquipmentPriceListsTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EquipmentPriceListsTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int?> priceListId = const Value.absent(),
+            Value<int?> equipmentId = const Value.absent(),
+            Value<double?> price = const Value.absent(),
+          }) =>
+              EquipmentPriceListsCompanion(
+            id: id,
+            priceListId: priceListId,
+            equipmentId: equipmentId,
+            price: price,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int?> priceListId = const Value.absent(),
+            Value<int?> equipmentId = const Value.absent(),
+            Value<double?> price = const Value.absent(),
+          }) =>
+              EquipmentPriceListsCompanion.insert(
+            id: id,
+            priceListId: priceListId,
+            equipmentId: equipmentId,
+            price: price,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EquipmentPriceListsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $EquipmentPriceListsTable,
+    EquipmentPriceList,
+    $$EquipmentPriceListsTableFilterComposer,
+    $$EquipmentPriceListsTableOrderingComposer,
+    $$EquipmentPriceListsTableAnnotationComposer,
+    $$EquipmentPriceListsTableCreateCompanionBuilder,
+    $$EquipmentPriceListsTableUpdateCompanionBuilder,
+    (
+      EquipmentPriceList,
+      BaseReferences<_$AppDatabase, $EquipmentPriceListsTable,
+          EquipmentPriceList>
+    ),
+    EquipmentPriceList,
+    PrefetchHooks Function()>;
+typedef $$AcademicManagementsTableCreateCompanionBuilder
+    = AcademicManagementsCompanion Function({
+  Value<int> id,
+  Value<int?> year,
+  Value<String?> registrationStartDate,
+  Value<String?> registrationEndDate,
+  Value<String?> state,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+typedef $$AcademicManagementsTableUpdateCompanionBuilder
+    = AcademicManagementsCompanion Function({
+  Value<int> id,
+  Value<int?> year,
+  Value<String?> registrationStartDate,
+  Value<String?> registrationEndDate,
+  Value<String?> state,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+
+class $$AcademicManagementsTableFilterComposer
+    extends Composer<_$AppDatabase, $AcademicManagementsTable> {
+  $$AcademicManagementsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get year => $composableBuilder(
+      column: $table.year, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get registrationStartDate => $composableBuilder(
+      column: $table.registrationStartDate,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get registrationEndDate => $composableBuilder(
+      column: $table.registrationEndDate,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$AcademicManagementsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AcademicManagementsTable> {
+  $$AcademicManagementsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get year => $composableBuilder(
+      column: $table.year, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get registrationStartDate => $composableBuilder(
+      column: $table.registrationStartDate,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get registrationEndDate => $composableBuilder(
+      column: $table.registrationEndDate,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$AcademicManagementsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AcademicManagementsTable> {
+  $$AcademicManagementsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get year =>
+      $composableBuilder(column: $table.year, builder: (column) => column);
+
+  GeneratedColumn<String> get registrationStartDate => $composableBuilder(
+      column: $table.registrationStartDate, builder: (column) => column);
+
+  GeneratedColumn<String> get registrationEndDate => $composableBuilder(
+      column: $table.registrationEndDate, builder: (column) => column);
+
+  GeneratedColumn<String> get state =>
+      $composableBuilder(column: $table.state, builder: (column) => column);
+
+  GeneratedColumn<int> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$AcademicManagementsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $AcademicManagementsTable,
+    AcademicManagement,
+    $$AcademicManagementsTableFilterComposer,
+    $$AcademicManagementsTableOrderingComposer,
+    $$AcademicManagementsTableAnnotationComposer,
+    $$AcademicManagementsTableCreateCompanionBuilder,
+    $$AcademicManagementsTableUpdateCompanionBuilder,
+    (
+      AcademicManagement,
+      BaseReferences<_$AppDatabase, $AcademicManagementsTable,
+          AcademicManagement>
+    ),
+    AcademicManagement,
+    PrefetchHooks Function()> {
+  $$AcademicManagementsTableTableManager(
+      _$AppDatabase db, $AcademicManagementsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AcademicManagementsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AcademicManagementsTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AcademicManagementsTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int?> year = const Value.absent(),
+            Value<String?> registrationStartDate = const Value.absent(),
+            Value<String?> registrationEndDate = const Value.absent(),
+            Value<String?> state = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              AcademicManagementsCompanion(
+            id: id,
+            year: year,
+            registrationStartDate: registrationStartDate,
+            registrationEndDate: registrationEndDate,
+            state: state,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int?> year = const Value.absent(),
+            Value<String?> registrationStartDate = const Value.absent(),
+            Value<String?> registrationEndDate = const Value.absent(),
+            Value<String?> state = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              AcademicManagementsCompanion.insert(
+            id: id,
+            year: year,
+            registrationStartDate: registrationStartDate,
+            registrationEndDate: registrationEndDate,
+            state: state,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$AcademicManagementsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $AcademicManagementsTable,
+    AcademicManagement,
+    $$AcademicManagementsTableFilterComposer,
+    $$AcademicManagementsTableOrderingComposer,
+    $$AcademicManagementsTableAnnotationComposer,
+    $$AcademicManagementsTableCreateCompanionBuilder,
+    $$AcademicManagementsTableUpdateCompanionBuilder,
+    (
+      AcademicManagement,
+      BaseReferences<_$AppDatabase, $AcademicManagementsTable,
+          AcademicManagement>
+    ),
+    AcademicManagement,
+    PrefetchHooks Function()>;
+typedef $$EquipmentListDetailsTableCreateCompanionBuilder
+    = EquipmentListDetailsCompanion Function({
+  Value<int> id,
+  Value<String?> singlePurchase,
+  Value<double?> minQuantity,
+  Value<double?> maxQuantity,
+  Value<int?> equipmentListId,
+  Value<int?> equipmentId,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+typedef $$EquipmentListDetailsTableUpdateCompanionBuilder
+    = EquipmentListDetailsCompanion Function({
+  Value<int> id,
+  Value<String?> singlePurchase,
+  Value<double?> minQuantity,
+  Value<double?> maxQuantity,
+  Value<int?> equipmentListId,
+  Value<int?> equipmentId,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+
+class $$EquipmentListDetailsTableFilterComposer
+    extends Composer<_$AppDatabase, $EquipmentListDetailsTable> {
+  $$EquipmentListDetailsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get singlePurchase => $composableBuilder(
+      column: $table.singlePurchase,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get minQuantity => $composableBuilder(
+      column: $table.minQuantity, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get maxQuantity => $composableBuilder(
+      column: $table.maxQuantity, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get equipmentListId => $composableBuilder(
+      column: $table.equipmentListId,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$EquipmentListDetailsTableOrderingComposer
+    extends Composer<_$AppDatabase, $EquipmentListDetailsTable> {
+  $$EquipmentListDetailsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get singlePurchase => $composableBuilder(
+      column: $table.singlePurchase,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get minQuantity => $composableBuilder(
+      column: $table.minQuantity, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get maxQuantity => $composableBuilder(
+      column: $table.maxQuantity, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get equipmentListId => $composableBuilder(
+      column: $table.equipmentListId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$EquipmentListDetailsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EquipmentListDetailsTable> {
+  $$EquipmentListDetailsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get singlePurchase => $composableBuilder(
+      column: $table.singlePurchase, builder: (column) => column);
+
+  GeneratedColumn<double> get minQuantity => $composableBuilder(
+      column: $table.minQuantity, builder: (column) => column);
+
+  GeneratedColumn<double> get maxQuantity => $composableBuilder(
+      column: $table.maxQuantity, builder: (column) => column);
+
+  GeneratedColumn<int> get equipmentListId => $composableBuilder(
+      column: $table.equipmentListId, builder: (column) => column);
+
+  GeneratedColumn<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$EquipmentListDetailsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $EquipmentListDetailsTable,
+    EquipmentListDetail,
+    $$EquipmentListDetailsTableFilterComposer,
+    $$EquipmentListDetailsTableOrderingComposer,
+    $$EquipmentListDetailsTableAnnotationComposer,
+    $$EquipmentListDetailsTableCreateCompanionBuilder,
+    $$EquipmentListDetailsTableUpdateCompanionBuilder,
+    (
+      EquipmentListDetail,
+      BaseReferences<_$AppDatabase, $EquipmentListDetailsTable,
+          EquipmentListDetail>
+    ),
+    EquipmentListDetail,
+    PrefetchHooks Function()> {
+  $$EquipmentListDetailsTableTableManager(
+      _$AppDatabase db, $EquipmentListDetailsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EquipmentListDetailsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EquipmentListDetailsTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EquipmentListDetailsTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> singlePurchase = const Value.absent(),
+            Value<double?> minQuantity = const Value.absent(),
+            Value<double?> maxQuantity = const Value.absent(),
+            Value<int?> equipmentListId = const Value.absent(),
+            Value<int?> equipmentId = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              EquipmentListDetailsCompanion(
+            id: id,
+            singlePurchase: singlePurchase,
+            minQuantity: minQuantity,
+            maxQuantity: maxQuantity,
+            equipmentListId: equipmentListId,
+            equipmentId: equipmentId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> singlePurchase = const Value.absent(),
+            Value<double?> minQuantity = const Value.absent(),
+            Value<double?> maxQuantity = const Value.absent(),
+            Value<int?> equipmentListId = const Value.absent(),
+            Value<int?> equipmentId = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              EquipmentListDetailsCompanion.insert(
+            id: id,
+            singlePurchase: singlePurchase,
+            minQuantity: minQuantity,
+            maxQuantity: maxQuantity,
+            equipmentListId: equipmentListId,
+            equipmentId: equipmentId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EquipmentListDetailsTableProcessedTableManager
+    = ProcessedTableManager<
+        _$AppDatabase,
+        $EquipmentListDetailsTable,
+        EquipmentListDetail,
+        $$EquipmentListDetailsTableFilterComposer,
+        $$EquipmentListDetailsTableOrderingComposer,
+        $$EquipmentListDetailsTableAnnotationComposer,
+        $$EquipmentListDetailsTableCreateCompanionBuilder,
+        $$EquipmentListDetailsTableUpdateCompanionBuilder,
+        (
+          EquipmentListDetail,
+          BaseReferences<_$AppDatabase, $EquipmentListDetailsTable,
+              EquipmentListDetail>
+        ),
+        EquipmentListDetail,
+        PrefetchHooks Function()>;
+typedef $$AnnotationsTableCreateCompanionBuilder = AnnotationsCompanion
+    Function({
+  Value<int> id,
+  Value<String?> date,
+  Value<String?> type,
+  Value<String?> subject,
+  Value<String?> description,
+  Value<int?> studentId,
+  Value<String?> createdAt,
+});
+typedef $$AnnotationsTableUpdateCompanionBuilder = AnnotationsCompanion
+    Function({
+  Value<int> id,
+  Value<String?> date,
+  Value<String?> type,
+  Value<String?> subject,
+  Value<String?> description,
+  Value<int?> studentId,
+  Value<String?> createdAt,
+});
+
+class $$AnnotationsTableFilterComposer
+    extends Composer<_$AppDatabase, $AnnotationsTable> {
+  $$AnnotationsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get date => $composableBuilder(
+      column: $table.date, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get type => $composableBuilder(
+      column: $table.type, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get subject => $composableBuilder(
+      column: $table.subject, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get studentId => $composableBuilder(
+      column: $table.studentId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$AnnotationsTableOrderingComposer
+    extends Composer<_$AppDatabase, $AnnotationsTable> {
+  $$AnnotationsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get date => $composableBuilder(
+      column: $table.date, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get type => $composableBuilder(
+      column: $table.type, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get subject => $composableBuilder(
+      column: $table.subject, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get studentId => $composableBuilder(
+      column: $table.studentId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$AnnotationsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AnnotationsTable> {
+  $$AnnotationsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumn<String> get type =>
+      $composableBuilder(column: $table.type, builder: (column) => column);
+
+  GeneratedColumn<String> get subject =>
+      $composableBuilder(column: $table.subject, builder: (column) => column);
+
+  GeneratedColumn<String> get description => $composableBuilder(
+      column: $table.description, builder: (column) => column);
+
+  GeneratedColumn<int> get studentId =>
+      $composableBuilder(column: $table.studentId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$AnnotationsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $AnnotationsTable,
+    Annotation,
+    $$AnnotationsTableFilterComposer,
+    $$AnnotationsTableOrderingComposer,
+    $$AnnotationsTableAnnotationComposer,
+    $$AnnotationsTableCreateCompanionBuilder,
+    $$AnnotationsTableUpdateCompanionBuilder,
+    (Annotation, BaseReferences<_$AppDatabase, $AnnotationsTable, Annotation>),
+    Annotation,
+    PrefetchHooks Function()> {
+  $$AnnotationsTableTableManager(_$AppDatabase db, $AnnotationsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AnnotationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AnnotationsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AnnotationsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> date = const Value.absent(),
+            Value<String?> type = const Value.absent(),
+            Value<String?> subject = const Value.absent(),
+            Value<String?> description = const Value.absent(),
+            Value<int?> studentId = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+          }) =>
+              AnnotationsCompanion(
+            id: id,
+            date: date,
+            type: type,
+            subject: subject,
+            description: description,
+            studentId: studentId,
+            createdAt: createdAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> date = const Value.absent(),
+            Value<String?> type = const Value.absent(),
+            Value<String?> subject = const Value.absent(),
+            Value<String?> description = const Value.absent(),
+            Value<int?> studentId = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+          }) =>
+              AnnotationsCompanion.insert(
+            id: id,
+            date: date,
+            type: type,
+            subject: subject,
+            description: description,
+            studentId: studentId,
+            createdAt: createdAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$AnnotationsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $AnnotationsTable,
+    Annotation,
+    $$AnnotationsTableFilterComposer,
+    $$AnnotationsTableOrderingComposer,
+    $$AnnotationsTableAnnotationComposer,
+    $$AnnotationsTableCreateCompanionBuilder,
+    $$AnnotationsTableUpdateCompanionBuilder,
+    (Annotation, BaseReferences<_$AppDatabase, $AnnotationsTable, Annotation>),
+    Annotation,
+    PrefetchHooks Function()>;
+typedef $$AbsencesTableCreateCompanionBuilder = AbsencesCompanion Function({
+  Value<int> id,
+  Value<String?> date,
+  Value<int?> startTime,
+  Value<int?> endTime,
+  Value<String?> type,
+  Value<int?> time,
+  Value<String?> absenceGroup,
+  Value<int?> studentId,
+  Value<String?> createdAt,
+});
+typedef $$AbsencesTableUpdateCompanionBuilder = AbsencesCompanion Function({
+  Value<int> id,
+  Value<String?> date,
+  Value<int?> startTime,
+  Value<int?> endTime,
+  Value<String?> type,
+  Value<int?> time,
+  Value<String?> absenceGroup,
+  Value<int?> studentId,
+  Value<String?> createdAt,
+});
+
+class $$AbsencesTableFilterComposer
+    extends Composer<_$AppDatabase, $AbsencesTable> {
+  $$AbsencesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get date => $composableBuilder(
+      column: $table.date, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get startTime => $composableBuilder(
+      column: $table.startTime, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get endTime => $composableBuilder(
+      column: $table.endTime, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get type => $composableBuilder(
+      column: $table.type, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get time => $composableBuilder(
+      column: $table.time, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get absenceGroup => $composableBuilder(
+      column: $table.absenceGroup, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get studentId => $composableBuilder(
+      column: $table.studentId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$AbsencesTableOrderingComposer
+    extends Composer<_$AppDatabase, $AbsencesTable> {
+  $$AbsencesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get date => $composableBuilder(
+      column: $table.date, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get startTime => $composableBuilder(
+      column: $table.startTime, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get endTime => $composableBuilder(
+      column: $table.endTime, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get type => $composableBuilder(
+      column: $table.type, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get time => $composableBuilder(
+      column: $table.time, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get absenceGroup => $composableBuilder(
+      column: $table.absenceGroup,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get studentId => $composableBuilder(
+      column: $table.studentId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$AbsencesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $AbsencesTable> {
+  $$AbsencesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumn<int> get startTime =>
+      $composableBuilder(column: $table.startTime, builder: (column) => column);
+
+  GeneratedColumn<int> get endTime =>
+      $composableBuilder(column: $table.endTime, builder: (column) => column);
+
+  GeneratedColumn<String> get type =>
+      $composableBuilder(column: $table.type, builder: (column) => column);
+
+  GeneratedColumn<int> get time =>
+      $composableBuilder(column: $table.time, builder: (column) => column);
+
+  GeneratedColumn<String> get absenceGroup => $composableBuilder(
+      column: $table.absenceGroup, builder: (column) => column);
+
+  GeneratedColumn<int> get studentId =>
+      $composableBuilder(column: $table.studentId, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$AbsencesTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $AbsencesTable,
+    Absence,
+    $$AbsencesTableFilterComposer,
+    $$AbsencesTableOrderingComposer,
+    $$AbsencesTableAnnotationComposer,
+    $$AbsencesTableCreateCompanionBuilder,
+    $$AbsencesTableUpdateCompanionBuilder,
+    (Absence, BaseReferences<_$AppDatabase, $AbsencesTable, Absence>),
+    Absence,
+    PrefetchHooks Function()> {
+  $$AbsencesTableTableManager(_$AppDatabase db, $AbsencesTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AbsencesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AbsencesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AbsencesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> date = const Value.absent(),
+            Value<int?> startTime = const Value.absent(),
+            Value<int?> endTime = const Value.absent(),
+            Value<String?> type = const Value.absent(),
+            Value<int?> time = const Value.absent(),
+            Value<String?> absenceGroup = const Value.absent(),
+            Value<int?> studentId = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+          }) =>
+              AbsencesCompanion(
+            id: id,
+            date: date,
+            startTime: startTime,
+            endTime: endTime,
+            type: type,
+            time: time,
+            absenceGroup: absenceGroup,
+            studentId: studentId,
+            createdAt: createdAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> date = const Value.absent(),
+            Value<int?> startTime = const Value.absent(),
+            Value<int?> endTime = const Value.absent(),
+            Value<String?> type = const Value.absent(),
+            Value<int?> time = const Value.absent(),
+            Value<String?> absenceGroup = const Value.absent(),
+            Value<int?> studentId = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+          }) =>
+              AbsencesCompanion.insert(
+            id: id,
+            date: date,
+            startTime: startTime,
+            endTime: endTime,
+            type: type,
+            time: time,
+            absenceGroup: absenceGroup,
+            studentId: studentId,
+            createdAt: createdAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$AbsencesTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $AbsencesTable,
+    Absence,
+    $$AbsencesTableFilterComposer,
+    $$AbsencesTableOrderingComposer,
+    $$AbsencesTableAnnotationComposer,
+    $$AbsencesTableCreateCompanionBuilder,
+    $$AbsencesTableUpdateCompanionBuilder,
+    (Absence, BaseReferences<_$AppDatabase, $AbsencesTable, Absence>),
+    Absence,
+    PrefetchHooks Function()>;
+typedef $$EquipmentRequestsTableCreateCompanionBuilder
+    = EquipmentRequestsCompanion Function({
+  Value<int> id,
+  Value<String?> erpCode,
+  required String state,
+  Value<String?> date,
+  Value<String?> token,
+  required double total,
+  required int priceListId,
+  required int equipmentListId,
+  required int studentId,
+  Value<int?> employeeId,
+  required int academicManagementId,
+  Value<int?> createdBy,
+  required String createdAt,
+  required String updatedAt,
+});
+typedef $$EquipmentRequestsTableUpdateCompanionBuilder
+    = EquipmentRequestsCompanion Function({
+  Value<int> id,
+  Value<String?> erpCode,
+  Value<String> state,
+  Value<String?> date,
+  Value<String?> token,
+  Value<double> total,
+  Value<int> priceListId,
+  Value<int> equipmentListId,
+  Value<int> studentId,
+  Value<int?> employeeId,
+  Value<int> academicManagementId,
+  Value<int?> createdBy,
+  Value<String> createdAt,
+  Value<String> updatedAt,
+});
+
+class $$EquipmentRequestsTableFilterComposer
+    extends Composer<_$AppDatabase, $EquipmentRequestsTable> {
+  $$EquipmentRequestsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get erpCode => $composableBuilder(
+      column: $table.erpCode, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get date => $composableBuilder(
+      column: $table.date, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get token => $composableBuilder(
+      column: $table.token, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get total => $composableBuilder(
+      column: $table.total, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get priceListId => $composableBuilder(
+      column: $table.priceListId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get equipmentListId => $composableBuilder(
+      column: $table.equipmentListId,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get studentId => $composableBuilder(
+      column: $table.studentId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get employeeId => $composableBuilder(
+      column: $table.employeeId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$EquipmentRequestsTableOrderingComposer
+    extends Composer<_$AppDatabase, $EquipmentRequestsTable> {
+  $$EquipmentRequestsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get erpCode => $composableBuilder(
+      column: $table.erpCode, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get state => $composableBuilder(
+      column: $table.state, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get date => $composableBuilder(
+      column: $table.date, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get token => $composableBuilder(
+      column: $table.token, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get total => $composableBuilder(
+      column: $table.total, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get priceListId => $composableBuilder(
+      column: $table.priceListId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get equipmentListId => $composableBuilder(
+      column: $table.equipmentListId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get studentId => $composableBuilder(
+      column: $table.studentId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get employeeId => $composableBuilder(
+      column: $table.employeeId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$EquipmentRequestsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EquipmentRequestsTable> {
+  $$EquipmentRequestsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get erpCode =>
+      $composableBuilder(column: $table.erpCode, builder: (column) => column);
+
+  GeneratedColumn<String> get state =>
+      $composableBuilder(column: $table.state, builder: (column) => column);
+
+  GeneratedColumn<String> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumn<String> get token =>
+      $composableBuilder(column: $table.token, builder: (column) => column);
+
+  GeneratedColumn<double> get total =>
+      $composableBuilder(column: $table.total, builder: (column) => column);
+
+  GeneratedColumn<int> get priceListId => $composableBuilder(
+      column: $table.priceListId, builder: (column) => column);
+
+  GeneratedColumn<int> get equipmentListId => $composableBuilder(
+      column: $table.equipmentListId, builder: (column) => column);
+
+  GeneratedColumn<int> get studentId =>
+      $composableBuilder(column: $table.studentId, builder: (column) => column);
+
+  GeneratedColumn<int> get employeeId => $composableBuilder(
+      column: $table.employeeId, builder: (column) => column);
+
+  GeneratedColumn<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$EquipmentRequestsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $EquipmentRequestsTable,
+    EquipmentRequest,
+    $$EquipmentRequestsTableFilterComposer,
+    $$EquipmentRequestsTableOrderingComposer,
+    $$EquipmentRequestsTableAnnotationComposer,
+    $$EquipmentRequestsTableCreateCompanionBuilder,
+    $$EquipmentRequestsTableUpdateCompanionBuilder,
+    (
+      EquipmentRequest,
+      BaseReferences<_$AppDatabase, $EquipmentRequestsTable, EquipmentRequest>
+    ),
+    EquipmentRequest,
+    PrefetchHooks Function()> {
+  $$EquipmentRequestsTableTableManager(
+      _$AppDatabase db, $EquipmentRequestsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EquipmentRequestsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EquipmentRequestsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EquipmentRequestsTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> erpCode = const Value.absent(),
+            Value<String> state = const Value.absent(),
+            Value<String?> date = const Value.absent(),
+            Value<String?> token = const Value.absent(),
+            Value<double> total = const Value.absent(),
+            Value<int> priceListId = const Value.absent(),
+            Value<int> equipmentListId = const Value.absent(),
+            Value<int> studentId = const Value.absent(),
+            Value<int?> employeeId = const Value.absent(),
+            Value<int> academicManagementId = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String> createdAt = const Value.absent(),
+            Value<String> updatedAt = const Value.absent(),
+          }) =>
+              EquipmentRequestsCompanion(
+            id: id,
+            erpCode: erpCode,
+            state: state,
+            date: date,
+            token: token,
+            total: total,
+            priceListId: priceListId,
+            equipmentListId: equipmentListId,
+            studentId: studentId,
+            employeeId: employeeId,
+            academicManagementId: academicManagementId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> erpCode = const Value.absent(),
+            required String state,
+            Value<String?> date = const Value.absent(),
+            Value<String?> token = const Value.absent(),
+            required double total,
+            required int priceListId,
+            required int equipmentListId,
+            required int studentId,
+            Value<int?> employeeId = const Value.absent(),
+            required int academicManagementId,
+            Value<int?> createdBy = const Value.absent(),
+            required String createdAt,
+            required String updatedAt,
+          }) =>
+              EquipmentRequestsCompanion.insert(
+            id: id,
+            erpCode: erpCode,
+            state: state,
+            date: date,
+            token: token,
+            total: total,
+            priceListId: priceListId,
+            equipmentListId: equipmentListId,
+            studentId: studentId,
+            employeeId: employeeId,
+            academicManagementId: academicManagementId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EquipmentRequestsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $EquipmentRequestsTable,
+    EquipmentRequest,
+    $$EquipmentRequestsTableFilterComposer,
+    $$EquipmentRequestsTableOrderingComposer,
+    $$EquipmentRequestsTableAnnotationComposer,
+    $$EquipmentRequestsTableCreateCompanionBuilder,
+    $$EquipmentRequestsTableUpdateCompanionBuilder,
+    (
+      EquipmentRequest,
+      BaseReferences<_$AppDatabase, $EquipmentRequestsTable, EquipmentRequest>
+    ),
+    EquipmentRequest,
+    PrefetchHooks Function()>;
+typedef $$EquipmentRequestDetailsTableCreateCompanionBuilder
+    = EquipmentRequestDetailsCompanion Function({
+  Value<int> id,
+  required double quantity,
+  required double price,
+  required double subTotal,
+  required int equipmentId,
+  required int equipmentRequestId,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+typedef $$EquipmentRequestDetailsTableUpdateCompanionBuilder
+    = EquipmentRequestDetailsCompanion Function({
+  Value<int> id,
+  Value<double> quantity,
+  Value<double> price,
+  Value<double> subTotal,
+  Value<int> equipmentId,
+  Value<int> equipmentRequestId,
+  Value<int?> createdBy,
+  Value<String?> createdAt,
+  Value<String?> updatedAt,
+});
+
+class $$EquipmentRequestDetailsTableFilterComposer
+    extends Composer<_$AppDatabase, $EquipmentRequestDetailsTable> {
+  $$EquipmentRequestDetailsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get quantity => $composableBuilder(
+      column: $table.quantity, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get price => $composableBuilder(
+      column: $table.price, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<double> get subTotal => $composableBuilder(
+      column: $table.subTotal, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get equipmentRequestId => $composableBuilder(
+      column: $table.equipmentRequestId,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$EquipmentRequestDetailsTableOrderingComposer
+    extends Composer<_$AppDatabase, $EquipmentRequestDetailsTable> {
+  $$EquipmentRequestDetailsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get quantity => $composableBuilder(
+      column: $table.quantity, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get price => $composableBuilder(
+      column: $table.price, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<double> get subTotal => $composableBuilder(
+      column: $table.subTotal, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get equipmentRequestId => $composableBuilder(
+      column: $table.equipmentRequestId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get createdBy => $composableBuilder(
+      column: $table.createdBy, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get updatedAt => $composableBuilder(
+      column: $table.updatedAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$EquipmentRequestDetailsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EquipmentRequestDetailsTable> {
+  $$EquipmentRequestDetailsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<double> get quantity =>
+      $composableBuilder(column: $table.quantity, builder: (column) => column);
+
+  GeneratedColumn<double> get price =>
+      $composableBuilder(column: $table.price, builder: (column) => column);
+
+  GeneratedColumn<double> get subTotal =>
+      $composableBuilder(column: $table.subTotal, builder: (column) => column);
+
+  GeneratedColumn<int> get equipmentId => $composableBuilder(
+      column: $table.equipmentId, builder: (column) => column);
+
+  GeneratedColumn<int> get equipmentRequestId => $composableBuilder(
+      column: $table.equipmentRequestId, builder: (column) => column);
+
+  GeneratedColumn<int> get createdBy =>
+      $composableBuilder(column: $table.createdBy, builder: (column) => column);
+
+  GeneratedColumn<String> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+
+  GeneratedColumn<String> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$EquipmentRequestDetailsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $EquipmentRequestDetailsTable,
+    EquipmentRequestDetail,
+    $$EquipmentRequestDetailsTableFilterComposer,
+    $$EquipmentRequestDetailsTableOrderingComposer,
+    $$EquipmentRequestDetailsTableAnnotationComposer,
+    $$EquipmentRequestDetailsTableCreateCompanionBuilder,
+    $$EquipmentRequestDetailsTableUpdateCompanionBuilder,
+    (
+      EquipmentRequestDetail,
+      BaseReferences<_$AppDatabase, $EquipmentRequestDetailsTable,
+          EquipmentRequestDetail>
+    ),
+    EquipmentRequestDetail,
+    PrefetchHooks Function()> {
+  $$EquipmentRequestDetailsTableTableManager(
+      _$AppDatabase db, $EquipmentRequestDetailsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EquipmentRequestDetailsTableFilterComposer(
+                  $db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EquipmentRequestDetailsTableOrderingComposer(
+                  $db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EquipmentRequestDetailsTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<double> quantity = const Value.absent(),
+            Value<double> price = const Value.absent(),
+            Value<double> subTotal = const Value.absent(),
+            Value<int> equipmentId = const Value.absent(),
+            Value<int> equipmentRequestId = const Value.absent(),
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              EquipmentRequestDetailsCompanion(
+            id: id,
+            quantity: quantity,
+            price: price,
+            subTotal: subTotal,
+            equipmentId: equipmentId,
+            equipmentRequestId: equipmentRequestId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required double quantity,
+            required double price,
+            required double subTotal,
+            required int equipmentId,
+            required int equipmentRequestId,
+            Value<int?> createdBy = const Value.absent(),
+            Value<String?> createdAt = const Value.absent(),
+            Value<String?> updatedAt = const Value.absent(),
+          }) =>
+              EquipmentRequestDetailsCompanion.insert(
+            id: id,
+            quantity: quantity,
+            price: price,
+            subTotal: subTotal,
+            equipmentId: equipmentId,
+            equipmentRequestId: equipmentRequestId,
+            createdBy: createdBy,
+            createdAt: createdAt,
+            updatedAt: updatedAt,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$EquipmentRequestDetailsTableProcessedTableManager
+    = ProcessedTableManager<
+        _$AppDatabase,
+        $EquipmentRequestDetailsTable,
+        EquipmentRequestDetail,
+        $$EquipmentRequestDetailsTableFilterComposer,
+        $$EquipmentRequestDetailsTableOrderingComposer,
+        $$EquipmentRequestDetailsTableAnnotationComposer,
+        $$EquipmentRequestDetailsTableCreateCompanionBuilder,
+        $$EquipmentRequestDetailsTableUpdateCompanionBuilder,
+        (
+          EquipmentRequestDetail,
+          BaseReferences<_$AppDatabase, $EquipmentRequestDetailsTable,
+              EquipmentRequestDetail>
+        ),
+        EquipmentRequestDetail,
+        PrefetchHooks Function()>;
+typedef $$LicenseRequestsTableCreateCompanionBuilder = LicenseRequestsCompanion
+    Function({
+  Value<int> id,
+  required String studentCode,
+  required DateTime date,
+  required DateTime startDate,
+  required DateTime endDate,
+  required String status,
+  required bool test,
+  required String reason,
+  required String requesterName,
+  Value<int?> requesterPhone,
+  Value<String?> requesterEmail,
+  required String attachment,
+  required int studentId,
+  required int gradeId,
+  required int parallelId,
+  required int academicManagementId,
+  required int subjectId,
+});
+typedef $$LicenseRequestsTableUpdateCompanionBuilder = LicenseRequestsCompanion
+    Function({
+  Value<int> id,
+  Value<String> studentCode,
+  Value<DateTime> date,
+  Value<DateTime> startDate,
+  Value<DateTime> endDate,
+  Value<String> status,
+  Value<bool> test,
+  Value<String> reason,
+  Value<String> requesterName,
+  Value<int?> requesterPhone,
+  Value<String?> requesterEmail,
+  Value<String> attachment,
+  Value<int> studentId,
+  Value<int> gradeId,
+  Value<int> parallelId,
+  Value<int> academicManagementId,
+  Value<int> subjectId,
+});
+
+class $$LicenseRequestsTableFilterComposer
+    extends Composer<_$AppDatabase, $LicenseRequestsTable> {
+  $$LicenseRequestsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get studentCode => $composableBuilder(
+      column: $table.studentCode, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get date => $composableBuilder(
+      column: $table.date, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get startDate => $composableBuilder(
+      column: $table.startDate, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get endDate => $composableBuilder(
+      column: $table.endDate, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<bool> get test => $composableBuilder(
+      column: $table.test, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get reason => $composableBuilder(
+      column: $table.reason, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get requesterName => $composableBuilder(
+      column: $table.requesterName, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get requesterPhone => $composableBuilder(
+      column: $table.requesterPhone,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get requesterEmail => $composableBuilder(
+      column: $table.requesterEmail,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get attachment => $composableBuilder(
+      column: $table.attachment, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get studentId => $composableBuilder(
+      column: $table.studentId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get gradeId => $composableBuilder(
+      column: $table.gradeId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get parallelId => $composableBuilder(
+      column: $table.parallelId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId,
+      builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get subjectId => $composableBuilder(
+      column: $table.subjectId, builder: (column) => ColumnFilters(column));
+}
+
+class $$LicenseRequestsTableOrderingComposer
+    extends Composer<_$AppDatabase, $LicenseRequestsTable> {
+  $$LicenseRequestsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get studentCode => $composableBuilder(
+      column: $table.studentCode, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get date => $composableBuilder(
+      column: $table.date, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get startDate => $composableBuilder(
+      column: $table.startDate, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get endDate => $composableBuilder(
+      column: $table.endDate, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<bool> get test => $composableBuilder(
+      column: $table.test, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get reason => $composableBuilder(
+      column: $table.reason, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get requesterName => $composableBuilder(
+      column: $table.requesterName,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get requesterPhone => $composableBuilder(
+      column: $table.requesterPhone,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get requesterEmail => $composableBuilder(
+      column: $table.requesterEmail,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get attachment => $composableBuilder(
+      column: $table.attachment, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get studentId => $composableBuilder(
+      column: $table.studentId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get gradeId => $composableBuilder(
+      column: $table.gradeId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get parallelId => $composableBuilder(
+      column: $table.parallelId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get subjectId => $composableBuilder(
+      column: $table.subjectId, builder: (column) => ColumnOrderings(column));
+}
+
+class $$LicenseRequestsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LicenseRequestsTable> {
+  $$LicenseRequestsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get studentCode => $composableBuilder(
+      column: $table.studentCode, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get date =>
+      $composableBuilder(column: $table.date, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get startDate =>
+      $composableBuilder(column: $table.startDate, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get endDate =>
+      $composableBuilder(column: $table.endDate, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<bool> get test =>
+      $composableBuilder(column: $table.test, builder: (column) => column);
+
+  GeneratedColumn<String> get reason =>
+      $composableBuilder(column: $table.reason, builder: (column) => column);
+
+  GeneratedColumn<String> get requesterName => $composableBuilder(
+      column: $table.requesterName, builder: (column) => column);
+
+  GeneratedColumn<int> get requesterPhone => $composableBuilder(
+      column: $table.requesterPhone, builder: (column) => column);
+
+  GeneratedColumn<String> get requesterEmail => $composableBuilder(
+      column: $table.requesterEmail, builder: (column) => column);
+
+  GeneratedColumn<String> get attachment => $composableBuilder(
+      column: $table.attachment, builder: (column) => column);
+
+  GeneratedColumn<int> get studentId =>
+      $composableBuilder(column: $table.studentId, builder: (column) => column);
+
+  GeneratedColumn<int> get gradeId =>
+      $composableBuilder(column: $table.gradeId, builder: (column) => column);
+
+  GeneratedColumn<int> get parallelId => $composableBuilder(
+      column: $table.parallelId, builder: (column) => column);
+
+  GeneratedColumn<int> get academicManagementId => $composableBuilder(
+      column: $table.academicManagementId, builder: (column) => column);
+
+  GeneratedColumn<int> get subjectId =>
+      $composableBuilder(column: $table.subjectId, builder: (column) => column);
+}
+
+class $$LicenseRequestsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $LicenseRequestsTable,
+    LicenseRequest,
+    $$LicenseRequestsTableFilterComposer,
+    $$LicenseRequestsTableOrderingComposer,
+    $$LicenseRequestsTableAnnotationComposer,
+    $$LicenseRequestsTableCreateCompanionBuilder,
+    $$LicenseRequestsTableUpdateCompanionBuilder,
+    (
+      LicenseRequest,
+      BaseReferences<_$AppDatabase, $LicenseRequestsTable, LicenseRequest>
+    ),
+    LicenseRequest,
+    PrefetchHooks Function()> {
+  $$LicenseRequestsTableTableManager(
+      _$AppDatabase db, $LicenseRequestsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LicenseRequestsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LicenseRequestsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LicenseRequestsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String> studentCode = const Value.absent(),
+            Value<DateTime> date = const Value.absent(),
+            Value<DateTime> startDate = const Value.absent(),
+            Value<DateTime> endDate = const Value.absent(),
+            Value<String> status = const Value.absent(),
+            Value<bool> test = const Value.absent(),
+            Value<String> reason = const Value.absent(),
+            Value<String> requesterName = const Value.absent(),
+            Value<int?> requesterPhone = const Value.absent(),
+            Value<String?> requesterEmail = const Value.absent(),
+            Value<String> attachment = const Value.absent(),
+            Value<int> studentId = const Value.absent(),
+            Value<int> gradeId = const Value.absent(),
+            Value<int> parallelId = const Value.absent(),
+            Value<int> academicManagementId = const Value.absent(),
+            Value<int> subjectId = const Value.absent(),
+          }) =>
+              LicenseRequestsCompanion(
+            id: id,
+            studentCode: studentCode,
+            date: date,
+            startDate: startDate,
+            endDate: endDate,
+            status: status,
+            test: test,
+            reason: reason,
+            requesterName: requesterName,
+            requesterPhone: requesterPhone,
+            requesterEmail: requesterEmail,
+            attachment: attachment,
+            studentId: studentId,
+            gradeId: gradeId,
+            parallelId: parallelId,
+            academicManagementId: academicManagementId,
+            subjectId: subjectId,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required String studentCode,
+            required DateTime date,
+            required DateTime startDate,
+            required DateTime endDate,
+            required String status,
+            required bool test,
+            required String reason,
+            required String requesterName,
+            Value<int?> requesterPhone = const Value.absent(),
+            Value<String?> requesterEmail = const Value.absent(),
+            required String attachment,
+            required int studentId,
+            required int gradeId,
+            required int parallelId,
+            required int academicManagementId,
+            required int subjectId,
+          }) =>
+              LicenseRequestsCompanion.insert(
+            id: id,
+            studentCode: studentCode,
+            date: date,
+            startDate: startDate,
+            endDate: endDate,
+            status: status,
+            test: test,
+            reason: reason,
+            requesterName: requesterName,
+            requesterPhone: requesterPhone,
+            requesterEmail: requesterEmail,
+            attachment: attachment,
+            studentId: studentId,
+            gradeId: gradeId,
+            parallelId: parallelId,
+            academicManagementId: academicManagementId,
+            subjectId: subjectId,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$LicenseRequestsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $LicenseRequestsTable,
+    LicenseRequest,
+    $$LicenseRequestsTableFilterComposer,
+    $$LicenseRequestsTableOrderingComposer,
+    $$LicenseRequestsTableAnnotationComposer,
+    $$LicenseRequestsTableCreateCompanionBuilder,
+    $$LicenseRequestsTableUpdateCompanionBuilder,
+    (
+      LicenseRequest,
+      BaseReferences<_$AppDatabase, $LicenseRequestsTable, LicenseRequest>
+    ),
+    LicenseRequest,
+    PrefetchHooks Function()>;
+typedef $$SubjectsTableCreateCompanionBuilder = SubjectsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+});
+typedef $$SubjectsTableUpdateCompanionBuilder = SubjectsCompanion Function({
+  Value<int> id,
+  Value<String?> name,
+});
+
+class $$SubjectsTableFilterComposer
+    extends Composer<_$AppDatabase, $SubjectsTable> {
+  $$SubjectsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnFilters(column));
+}
+
+class $$SubjectsTableOrderingComposer
+    extends Composer<_$AppDatabase, $SubjectsTable> {
+  $$SubjectsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get name => $composableBuilder(
+      column: $table.name, builder: (column) => ColumnOrderings(column));
+}
+
+class $$SubjectsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SubjectsTable> {
+  $$SubjectsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get name =>
+      $composableBuilder(column: $table.name, builder: (column) => column);
+}
+
+class $$SubjectsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $SubjectsTable,
+    Subject,
+    $$SubjectsTableFilterComposer,
+    $$SubjectsTableOrderingComposer,
+    $$SubjectsTableAnnotationComposer,
+    $$SubjectsTableCreateCompanionBuilder,
+    $$SubjectsTableUpdateCompanionBuilder,
+    (Subject, BaseReferences<_$AppDatabase, $SubjectsTable, Subject>),
+    Subject,
+    PrefetchHooks Function()> {
+  $$SubjectsTableTableManager(_$AppDatabase db, $SubjectsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SubjectsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SubjectsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SubjectsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+          }) =>
+              SubjectsCompanion(
+            id: id,
+            name: name,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+          }) =>
+              SubjectsCompanion.insert(
+            id: id,
+            name: name,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$SubjectsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $SubjectsTable,
+    Subject,
+    $$SubjectsTableFilterComposer,
+    $$SubjectsTableOrderingComposer,
+    $$SubjectsTableAnnotationComposer,
+    $$SubjectsTableCreateCompanionBuilder,
+    $$SubjectsTableUpdateCompanionBuilder,
+    (Subject, BaseReferences<_$AppDatabase, $SubjectsTable, Subject>),
+    Subject,
+    PrefetchHooks Function()>;
+typedef $$GradesSubjectsTableCreateCompanionBuilder = GradesSubjectsCompanion
+    Function({
+  Value<int> id,
+  required int gradeId,
+  required int subjectId,
+});
+typedef $$GradesSubjectsTableUpdateCompanionBuilder = GradesSubjectsCompanion
+    Function({
+  Value<int> id,
+  Value<int> gradeId,
+  Value<int> subjectId,
+});
+
+class $$GradesSubjectsTableFilterComposer
+    extends Composer<_$AppDatabase, $GradesSubjectsTable> {
+  $$GradesSubjectsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get gradeId => $composableBuilder(
+      column: $table.gradeId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get subjectId => $composableBuilder(
+      column: $table.subjectId, builder: (column) => ColumnFilters(column));
+}
+
+class $$GradesSubjectsTableOrderingComposer
+    extends Composer<_$AppDatabase, $GradesSubjectsTable> {
+  $$GradesSubjectsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get gradeId => $composableBuilder(
+      column: $table.gradeId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get subjectId => $composableBuilder(
+      column: $table.subjectId, builder: (column) => ColumnOrderings(column));
+}
+
+class $$GradesSubjectsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $GradesSubjectsTable> {
+  $$GradesSubjectsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get gradeId =>
+      $composableBuilder(column: $table.gradeId, builder: (column) => column);
+
+  GeneratedColumn<int> get subjectId =>
+      $composableBuilder(column: $table.subjectId, builder: (column) => column);
+}
+
+class $$GradesSubjectsTableTableManager extends RootTableManager<
+    _$AppDatabase,
+    $GradesSubjectsTable,
+    GradeSubject,
+    $$GradesSubjectsTableFilterComposer,
+    $$GradesSubjectsTableOrderingComposer,
+    $$GradesSubjectsTableAnnotationComposer,
+    $$GradesSubjectsTableCreateCompanionBuilder,
+    $$GradesSubjectsTableUpdateCompanionBuilder,
+    (
+      GradeSubject,
+      BaseReferences<_$AppDatabase, $GradesSubjectsTable, GradeSubject>
+    ),
+    GradeSubject,
+    PrefetchHooks Function()> {
+  $$GradesSubjectsTableTableManager(
+      _$AppDatabase db, $GradesSubjectsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$GradesSubjectsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$GradesSubjectsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$GradesSubjectsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int> gradeId = const Value.absent(),
+            Value<int> subjectId = const Value.absent(),
+          }) =>
+              GradesSubjectsCompanion(
+            id: id,
+            gradeId: gradeId,
+            subjectId: subjectId,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            required int gradeId,
+            required int subjectId,
+          }) =>
+              GradesSubjectsCompanion.insert(
+            id: id,
+            gradeId: gradeId,
+            subjectId: subjectId,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$GradesSubjectsTableProcessedTableManager = ProcessedTableManager<
+    _$AppDatabase,
+    $GradesSubjectsTable,
+    GradeSubject,
+    $$GradesSubjectsTableFilterComposer,
+    $$GradesSubjectsTableOrderingComposer,
+    $$GradesSubjectsTableAnnotationComposer,
+    $$GradesSubjectsTableCreateCompanionBuilder,
+    $$GradesSubjectsTableUpdateCompanionBuilder,
+    (
+      GradeSubject,
+      BaseReferences<_$AppDatabase, $GradesSubjectsTable, GradeSubject>
+    ),
+    GradeSubject,
+    PrefetchHooks Function()>;
+
+class $AppDatabaseManager {
+  final _$AppDatabase _db;
+  $AppDatabaseManager(this._db);
+  $$TypesTableTableManager get types =>
+      $$TypesTableTableManager(_db, _db.types);
+  $$NewsTableTableManager get news => $$NewsTableTableManager(_db, _db.news);
+  $$NewsImagesTableTableManager get newsImages =>
+      $$NewsImagesTableTableManager(_db, _db.newsImages);
+  $$NotificationsTableTableManager get notifications =>
+      $$NotificationsTableTableManager(_db, _db.notifications);
+  $$UsersTableTableManager get users =>
+      $$UsersTableTableManager(_db, _db.users);
+  $$GradesTableTableManager get grades =>
+      $$GradesTableTableManager(_db, _db.grades);
+  $$ParallelsTableTableManager get parallels =>
+      $$ParallelsTableTableManager(_db, _db.parallels);
+  $$EquipmentsTableTableManager get equipments =>
+      $$EquipmentsTableTableManager(_db, _db.equipments);
+  $$PriceListsTableTableManager get priceLists =>
+      $$PriceListsTableTableManager(_db, _db.priceLists);
+  $$EquipmentListsTableTableManager get equipmentLists =>
+      $$EquipmentListsTableTableManager(_db, _db.equipmentLists);
+  $$StudentsTableTableManager get students =>
+      $$StudentsTableTableManager(_db, _db.students);
+  $$EquipmentPriceListsTableTableManager get equipmentPriceLists =>
+      $$EquipmentPriceListsTableTableManager(_db, _db.equipmentPriceLists);
+  $$AcademicManagementsTableTableManager get academicManagements =>
+      $$AcademicManagementsTableTableManager(_db, _db.academicManagements);
+  $$EquipmentListDetailsTableTableManager get equipmentListDetails =>
+      $$EquipmentListDetailsTableTableManager(_db, _db.equipmentListDetails);
+  $$AnnotationsTableTableManager get annotations =>
+      $$AnnotationsTableTableManager(_db, _db.annotations);
+  $$AbsencesTableTableManager get absences =>
+      $$AbsencesTableTableManager(_db, _db.absences);
+  $$EquipmentRequestsTableTableManager get equipmentRequests =>
+      $$EquipmentRequestsTableTableManager(_db, _db.equipmentRequests);
+  $$EquipmentRequestDetailsTableTableManager get equipmentRequestDetails =>
+      $$EquipmentRequestDetailsTableTableManager(
+          _db, _db.equipmentRequestDetails);
+  $$LicenseRequestsTableTableManager get licenseRequests =>
+      $$LicenseRequestsTableTableManager(_db, _db.licenseRequests);
+  $$SubjectsTableTableManager get subjects =>
+      $$SubjectsTableTableManager(_db, _db.subjects);
+  $$GradesSubjectsTableTableManager get gradesSubjects =>
+      $$GradesSubjectsTableTableManager(_db, _db.gradesSubjects);
+}
+
 class StudentEquipmentListResult {
   final int id;
   final String? name;
@@ -7713,7 +11839,7 @@ class StudentEquipmentListResult {
 class StudentHistoricalEquipmentRequestResult {
   final int id;
   final String? name;
-  final double quantity;
+  final double? quantity;
   final double price;
   final double subTotal;
   final double? min;
@@ -7721,7 +11847,7 @@ class StudentHistoricalEquipmentRequestResult {
   StudentHistoricalEquipmentRequestResult({
     required this.id,
     this.name,
-    required this.quantity,
+    this.quantity,
     required this.price,
     required this.subTotal,
     this.min,

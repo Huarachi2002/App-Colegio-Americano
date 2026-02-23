@@ -1,6 +1,6 @@
 class SyncConstants {
-  static const EXTERNAL_SERVER_URL = "http://192.168.0.118:9595/dashboard";
-  static const SERVER_URL = "https://ds.icorebiz.net";
+  // static const SERVER_URL = "https://ds.icorebiz.net";
+  static const SERVER_URL = "https://contasap.sccs.edu.bo";
   static const ATTEMPTS = 3;
   static const LICENSE_ENDPOINT = "/rest/client/";
 
